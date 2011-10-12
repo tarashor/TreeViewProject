@@ -38,7 +38,7 @@
             <Border Name="Bd" 
               Background="{StaticResource ItemAreaBrush}"
               BorderBrush="{StaticResource ItemBorderBrush}" 
-                    HorizontalAlignment="Center"
+              
               BorderThickness="0.6" 
               CornerRadius="8"
               Padding="6"
