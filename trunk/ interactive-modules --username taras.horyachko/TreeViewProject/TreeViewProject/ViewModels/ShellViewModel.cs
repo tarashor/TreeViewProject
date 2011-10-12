@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using TreeViewProject.Utils;
 using System.Xml;
 using System.Windows.Input;
+using ThemesPack;
 
 namespace TreeViewProject.ViewModels
 {

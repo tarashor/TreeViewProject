@@ -18,36 +18,12 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-        
-        <Style TargetType="ListBoxItem">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate>
-                        <Rectangle Stroke="Red" Fill="Transparent" HorizontalAlignment="Center" StrokeDashArray="1 2">
-                        </Rectangle>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
 
         <SolidColorBrush x:Key="HeaderBrush" Color="#5280BC"/>
         <SolidColorBrush x:Key="DetailedViewHeaderBrush" Color="#FF769BCB"/>
         
-        <Style x:Key="BtnStyle" TargetType="Button">
-            <Setter Property="Margin" Value="10"/>
-            <Setter Property="VerticalAlignment" Value="Bottom"/>
-        </Style>
-
-        <SolidColorBrush Color="#FFADD8E6" x:Key="ZoomControlBackground"/>
-
-        <LinearGradientBrush x:Key="EngineBackground" StartPoint="0,0" EndPoint="0,1">
-            <LinearGradientBrush.GradientStops>
-                <GradientStop Color="#318ED5" Offset="0" />
-                <GradientStop Color="#1356AE" Offset="1" />
-            </LinearGradientBrush.GradientStops>
-        </LinearGradientBrush>
-
-        <LinearGradientBrush x:Key="WebserverBackground" StartPoint="0,0" EndPoint="0,1">
+        <SolidColorBrush x:Key="asadsad" Color="#FFADD8"/>
+        <LinearGradientBrush x:Key="TreeBackground" StartPoint="0,0" EndPoint="0,1">
             <LinearGradientBrush.GradientStops>
                 <GradientStop Color="#F3C04A" Offset="0" />
                 <GradientStop Color="#E9890A" Offset="1" />
@@ -83,8 +59,8 @@
 
         </Style>
 
-        <DataTemplate DataType="{x:Type vm:Tree}">
-            <Border CornerRadius="2" Name="MainBorder" Background="{StaticResource WebserverBackground}" Margin="5">
+        <DataTemplate x:Key="TreeDataTemplate" DataType="{x:Type vm:Tree}">
+            <Border CornerRadius="2" Name="MainBorder" Background="{StaticResource TreeBackground}" Margin="5">
                 <StackPanel>
                     <TextBlock Style="{StaticResource TrimmingTextBlock}" Foreground="White" FontSize="12" FontWeight="Bold" HorizontalAlignment="Center" Text="{Binding Name}"/>
                     <Border CornerRadius="2" Background="White" Opacity="0.8" Margin="3">
@@ -105,10 +81,63 @@
             </Border>
         </DataTemplate>
 
+        <Style x:Key="ItemStyle" TargetType="{x:Type ListBoxItem}">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Margin" Value="3"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Border Name="selectionBorder" CornerRadius="4" HorizontalAlignment="Stretch" VerticalAlignment="Top" 
+                                BorderBrush="Transparent" Background="Transparent" BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" TargetName="selectionBorder" >
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0, 0" EndPoint="0,1">
+                                            <GradientStop Color="#FFF5FBFF" Offset="0"/>
+                                            <GradientStop Color="#FFD1E4F3" Offset="1"/>
+                                            <GradientStop Color="#FFD0DFEB" Offset="0.518"/>
+                                            <GradientStop Color="#FFD8E8F5" Offset="0.482"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="BorderBrush" TargetName="selectionBorder" >
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="#FFB1C4D3"/>
+                                    </Setter.Value>
+                                </Setter>
+                                
+                            </Trigger>
+
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" TargetName="selectionBorder" >
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0, 0" EndPoint="0,1">
+                                            <GradientStop Color="#FFF5FBFF" Offset="0"/>
+                                            <GradientStop Color="#FFAACEE9" Offset="1"/>
+                                            <GradientStop Color="#FFBFD3E3" Offset="0.518"/>
+                                            <GradientStop Color="#FFC2DBEF" Offset="0.482"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="BorderBrush" TargetName="selectionBorder" >
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="#FF81B6DF"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <Style TargetType="Grid" x:Key="DetailedView">
             <Setter Property="RenderTransform">
                 <Setter.Value>
-                    <ScaleTransform CenterX="0" CenterY="{Binding ActualHeight, ElementName=MaximizedView}" />
+                    <ScaleTransform CenterX="0" CenterY="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType={x:Type local:Shell}}}" />
                 </Setter.Value>
             </Setter>
             <Style.Triggers>
@@ -132,7 +161,11 @@
     <Grid>
         <GroupBox Header="Trees" Margin="50, 50, 50, 100" Name="groupBox1" >
             <Grid>
-                <ListBox ItemsSource="{Binding Trees}"/>
+                <ListBox ItemsSource="{Binding Trees}"
+                         BorderThickness="0"
+                         ItemContainerStyle="{StaticResource ItemStyle}"
+                         ItemTemplate="{StaticResource TreeDataTemplate}"
+                         />
             </Grid>
         </GroupBox>
         <Border Style="{StaticResource AnimationBorder}"
@@ -150,16 +183,16 @@
                 <TextBlock Text="ToolBox" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                 <Border Grid.Row="1" CornerRadius="0" BorderBrush="Gray">
                     <StackPanel Orientation="Horizontal">
-                        <Button Style="{StaticResource BtnStyle}" Command="{Binding NewTreeCommand}">New</Button>
-                        <Button Style="{StaticResource BtnStyle}" Command="{Binding NewTreeCommand}">Delete</Button>
-                        <Button Style="{StaticResource BtnStyle}" Command="{Binding NewTreeCommand}">View</Button>
-                        <Button  Command="{Binding CloseCommand}">Close</Button>
+                        <Button Style="{DynamicResource {x:Static theme:CustomResources.NormalButtonStyleKey}}" VerticalAlignment="Top" Margin="10" Command="{Binding NewTreeCommand}">New</Button>
+                        <Button Style="{DynamicResource {x:Static theme:CustomResources.NormalButtonStyleKey}}" VerticalAlignment="Top" Margin="10" Command="{Binding NewTreeCommand}">Delete</Button>
+                        <Button Style="{DynamicResource {x:Static theme:CustomResources.NormalButtonStyleKey}}" VerticalAlignment="Top" Margin="10" Command="{Binding NewTreeCommand}">View</Button>
+                        <Button Style="{DynamicResource {x:Static theme:CustomResources.NormalButtonStyleKey}}" VerticalAlignment="Top" Margin="10" Command="{Binding CloseCommand}">Close</Button>
                     </StackPanel>
                 </Border>
             </Grid>
         </Border>
-        
-        <!--<Grid Style="{StaticResource DetailedView}" Visibility="{Binding Path=MaximizedViewState, Converter={StaticResource MaximizedViewStateToVisibility}}">
+
+        <!--<Grid Style="{StaticResource DetailedView}" Visibility="{Binding PNormalGradientBrushKeyte, Converter={StaticResource MaximizedViewStateToVisibility}}">
             <Border Background="Black" Opacity="0.4" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch">
             </Border>
             <Border Margin="50" CornerRadius="3" Opacity="1" Background="{StaticResource DetailedViewHeaderBrush}" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" >

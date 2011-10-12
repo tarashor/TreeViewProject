@@ -2,7 +2,7 @@
 
 namespace ThemesPack
 {
-    public static class CustomResources
+    public class CustomResources
     {
         #region Brushes
         

@@ -110,7 +110,7 @@
     <SolidColorBrush x:Key="ButtonBorder" Color="#FF003C74"/>
 
     <Style x:Key="{x:Static local:CustomResources.NormalButtonStyleKey}" TargetType="{x:Type Button}">
-        <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}"/>
+        <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static local:CustomResources.ButtonFocusVisualKey}}"/>
         <Setter Property="Background" Value="{StaticResource ButtonNormalBackgroundFill}"/>
         <Setter Property="BorderBrush" Value="{StaticResource ButtonBorder}"/>
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
