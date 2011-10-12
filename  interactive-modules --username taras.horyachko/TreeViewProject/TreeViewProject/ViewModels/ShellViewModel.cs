@@ -7,14 +7,18 @@ using TreeViewProject.Utils;
 using System.Xml;
 using System.Windows.Input;
 using ThemesPack;
+using System.Windows.Data;
 
 namespace TreeViewProject.ViewModels
 {
     public class ShellViewModel:ViewModelBase
     {
         private const string TreesProperty = "Trees";
-        private const string IsDetailViewProperty = "IsDetailView";
+        private const string CurrentDetailedViewProperty = "CurrentDetailedView";
 
+        private XmlDocument _xmlDocument;
+
+        #region Commands
         private DelegateCommand _closeCommand;
         private DelegateCommand _newTreeCommand;
         private DelegateCommand _deleteTreeCommand;
@@ -36,7 +40,7 @@ namespace TreeViewProject.ViewModels
             get
             {
                 if (_newTreeCommand == null)
-                    _newTreeCommand = new DelegateCommand(param => this.OnRequestClose());
+                    _newTreeCommand = new DelegateCommand(CreateTree, CanCreateTree);
 
                 return _newTreeCommand;
             }
@@ -47,7 +51,7 @@ namespace TreeViewProject.ViewModels
             get
             {
                 if (_deleteTreeCommand == null)
-                    _deleteTreeCommand = new DelegateCommand(param => this.OnRequestClose());
+                    _deleteTreeCommand = new DelegateCommand(DeleteTree, CanDeleteTree);
 
                 return _deleteTreeCommand;
             }
@@ -58,11 +62,13 @@ namespace TreeViewProject.ViewModels
             get
             {
                 if (_viewTreeCommand == null)
-                    _viewTreeCommand = new DelegateCommand(param => this.OnRequestClose());
+                    _viewTreeCommand = new DelegateCommand(ViewTree, CanView);
 
                 return _viewTreeCommand;
             }
         }
+        #endregion
+
 
         private ObservableCollection<Tree> trees;
         public ObservableCollection<Tree> Trees
@@ -75,46 +81,102 @@ namespace TreeViewProject.ViewModels
             }
         }
 
-        private bool isDetailView;
+        private DetailedViewModelBase _currentDetailedView;
 
-        public bool IsDetailView
+        public DetailedViewModelBase CurrentDetailedView
         {
-            get { return isDetailView; }
+            get { return _currentDetailedView; }
             set
             {
-                isDetailView = value;
-                OnPropertyChanged(IsDetailViewProperty);
+                _currentDetailedView = value;
+                OnPropertyChanged(CurrentDetailedViewProperty);
             }
         }
 
         public ShellViewModel(string fileName)
         {
-            XmlDocument xmlDocument = new XmlDocument();
-            xmlDocument.Load(fileName);
-            FillTrees(xmlDocument);
-
-            isDetailView = false;
+            _xmlDocument = new XmlDocument();
+            _xmlDocument.Load(fileName);
+            FillTrees();
+            CurrentDetailedView = null;
         }
 
-        private void FillTrees(XmlDocument xmlDocument)
+        private void FillTrees()
         {
-            trees = new ObservableCollection<Tree>();
-            XmlNodeList treesXml = xmlDocument.SelectNodes("trees/tree");
+            Trees = new ObservableCollection<Tree>();
+            XmlNodeList treesXml = _xmlDocument.SelectNodes("trees/tree");
             foreach (XmlNode treeXml in treesXml)
             {
-                Tree tree = new Tree(xmlDocument, treeXml);
-                trees.Add(tree);
+                Tree tree = new Tree(_xmlDocument, treeXml);
+                Trees.Add(tree);
             }
         }
 
         public event EventHandler RequestClose;
 
-        void OnRequestClose()
+        private void OnRequestClose()
         {
             EventHandler handler = this.RequestClose;
             if (handler != null)
                 handler(this, EventArgs.Empty);
         }
-        
+
+        private bool CanView(object selectedItem)
+        {
+            bool res = false;
+            Tree selectedTree = selectedItem as Tree;
+            if (selectedTree != null)
+            {
+                res = true;
+            }
+            return res;
+        }
+
+        private void ViewTree(object selectedItem)
+        {
+            
+        }
+
+        private bool CanCreateTree(object selectedItem)
+        {
+            return true;
+        }
+
+        private void CreateTree(object selectedItem)
+        {
+            NewTreeViewModel newTreeVW = new NewTreeViewModel();
+            newTreeVW.CloseView += new EventHandler(newTreeVW_CloseView);
+            newTreeVW.SaveView += new EventHandler(newTreeVW_SaveView);
+            CurrentDetailedView = newTreeVW;
+        }
+
+        void newTreeVW_SaveView(object sender, EventArgs e)
+        {
+            Tree tree = new Tree(_xmlDocument, _xmlDocument.CreateNode("element", "tree", ""));
+            tree.Name = "ttt";
+            Trees.Add(tree);
+        }
+
+        void newTreeVW_CloseView(object sender, EventArgs e)
+        {
+            CurrentDetailedView = null;
+        }
+
+        private bool CanDeleteTree(object selectedItem)
+        {
+            bool res = false;
+            Tree selectedTree = selectedItem as Tree;
+            if (selectedTree != null)
+            {
+                res = true;
+            }
+            return res;
+        }
+
+        private void DeleteTree(object selectedItem)
+        {
+           
+        }
+
     }
 }
