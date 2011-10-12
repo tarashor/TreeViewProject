@@ -11,181 +11,199 @@
         WindowState="Maximized"
         >
     <Window.Resources>
-        <conv:NullToVisibilityConverter x:Key="NullToVisibility"/>
-        <Style x:Key="AnimationBorder" TargetType="Border">
-            <Setter Property="Background">
-                <Setter.Value>
-                    <SolidColorBrush Color="#FFD0E1F5"/>
-                </Setter.Value>
-            </Setter>
-            <Setter Property="Height" Value="15"/>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Trigger.EnterActions>
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetProperty="Height" To="80"></DoubleAnimation>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </Trigger.EnterActions>
-                    <Trigger.ExitActions>
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetProperty="Height" To="20"></DoubleAnimation>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </Trigger.ExitActions>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="OrgChartTreeViewItemStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <conv:NullToVisibilityConverter x:Key="NullToVisibility"/>
+                    <Style x:Key="AnimationBorder" TargetType="Border">
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <SolidColorBrush Color="#FFD0E1F5"/>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Height" Value="15"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetProperty="Height" To="80"></DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetProperty="Height" To="20"></DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
 
-        <SolidColorBrush x:Key="HeaderBrush" Color="#5280BC"/>
-        <SolidColorBrush x:Key="DetailedViewHeaderBrush" Color="#FF769BCB"/>
-        
-        <SolidColorBrush x:Key="asadsad" Color="#FFADD8"/>
-        
-        <LinearGradientBrush x:Key="TreeBackground" StartPoint="0,0" EndPoint="0,1">
-            <LinearGradientBrush.GradientStops>
-                <GradientStop Color="#F3C04A" Offset="0" />
-                <GradientStop Color="#E9890A" Offset="1" />
-            </LinearGradientBrush.GradientStops>
-        </LinearGradientBrush>
-        <LinearGradientBrush x:Key="WindowBackground" StartPoint="0,0" EndPoint="0,1">
-            <LinearGradientBrush.GradientStops>
-                <GradientStop Color="#FFE8F1FF" Offset="1"/>
-                <GradientStop Color="#FFFFFFFF" Offset="0"/>
-            </LinearGradientBrush.GradientStops>
-        </LinearGradientBrush>
-        
+                    <SolidColorBrush x:Key="HeaderBrush" Color="#5280BC"/>
+                    <SolidColorBrush x:Key="DetailedViewHeaderBrush" Color="#FF769BCB"/>
 
-        <Style TargetType="TextBlock" x:Key="TrimmingTextBlock">
-            <Setter Property="TextTrimming" Value="CharacterEllipsis" />
-            <Setter Property="ToolTipService.IsEnabled" Value="True" />
-            <Setter Property="ToolTip" Value="{Binding Text, RelativeSource={RelativeSource Mode=Self}}" />
-            <Style.Triggers>
-                <Trigger Property="Text" Value="{x:Null}">
-                    <Setter Property="ToolTipService.IsEnabled" Value="False"/>
-                </Trigger>
-                <Trigger Property="Text">
-                    <Trigger.Value>
-                        <x:Static Member="System:String.Empty" />
-                    </Trigger.Value>
-                    <Setter Property="ToolTipService.IsEnabled" Value="False"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
+                    <SolidColorBrush x:Key="asadsad" Color="#FFADD8"/>
 
-        <Style TargetType="TextBlock" x:Key="HeaderText">
-            <Setter Property="Foreground" Value="{StaticResource HeaderBrush}"/>
-            <Setter Property="Margin" Value="3" />
-            <Setter Property="FontWeight" Value="Bold" />
-            <Setter Property="FontSize" Value="14" />
-        </Style>
+                    <LinearGradientBrush x:Key="TreeBackground" StartPoint="0,0" EndPoint="0,1">
+                        <LinearGradientBrush.GradientStops>
+                            <GradientStop Color="#F3C04A" Offset="0" />
+                            <GradientStop Color="#E9890A" Offset="1" />
+                        </LinearGradientBrush.GradientStops>
+                    </LinearGradientBrush>
+                    <LinearGradientBrush x:Key="WindowBackground" StartPoint="0,0" EndPoint="0,1">
+                        <LinearGradientBrush.GradientStops>
+                            <GradientStop Color="#FFE8F1FF" Offset="1"/>
+                            <GradientStop Color="#FFFFFFFF" Offset="0"/>
+                        </LinearGradientBrush.GradientStops>
+                    </LinearGradientBrush>
 
-        <Style TargetType="TextBlock" x:Key="ValueText" BasedOn="{StaticResource TrimmingTextBlock}">
-            <Setter Property="Margin" Value="3" />
 
-        </Style>
+                    <Style TargetType="TextBlock" x:Key="TrimmingTextBlock">
+                        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+                        <Setter Property="ToolTipService.IsEnabled" Value="True" />
+                        <Setter Property="ToolTip" Value="{Binding Text, RelativeSource={RelativeSource Mode=Self}}" />
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="{x:Null}">
+                                <Setter Property="ToolTipService.IsEnabled" Value="False"/>
+                            </Trigger>
+                            <Trigger Property="Text">
+                                <Trigger.Value>
+                                    <x:Static Member="System:String.Empty" />
+                                </Trigger.Value>
+                                <Setter Property="ToolTipService.IsEnabled" Value="False"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
 
-        <DataTemplate x:Key="TreeDataTemplate" DataType="{x:Type vm:Tree}">
-            <Border CornerRadius="2" Name="MainBorder" Background="{StaticResource TreeBackground}" Margin="5">
-                <StackPanel>
-                    <TextBlock Style="{StaticResource TrimmingTextBlock}" Foreground="White" FontSize="12" FontWeight="Bold" HorizontalAlignment="Center" Text="{Binding Name}"/>
-                    <Border CornerRadius="2" Background="White" Opacity="0.8" Margin="3">
+                    <Style TargetType="TextBlock" x:Key="HeaderText">
+                        <Setter Property="Foreground" Value="{StaticResource HeaderBrush}"/>
+                        <Setter Property="Margin" Value="3" />
+                        <Setter Property="FontWeight" Value="Bold" />
+                        <Setter Property="FontSize" Value="14" />
+                    </Style>
+
+                    <Style TargetType="TextBlock" x:Key="ValueText" BasedOn="{StaticResource TrimmingTextBlock}">
+                        <Setter Property="Margin" Value="3" />
+
+                    </Style>
+
+                    <DataTemplate x:Key="TreeDataTemplate" DataType="{x:Type vm:Tree}">
+                        <Border CornerRadius="2" Name="MainBorder" Background="{StaticResource TreeBackground}" Margin="5">
+                            <StackPanel>
+                                <TextBlock Style="{StaticResource TrimmingTextBlock}" Foreground="White" FontSize="12" FontWeight="Bold" HorizontalAlignment="Center" Text="{Binding Name}"/>
+                                <Border CornerRadius="2" Background="White" Opacity="0.8" Margin="3">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource ValueText}" FontStyle="Italic" Text="Nodes"/>
+                                        <TextBlock Grid.Column="1" Grid.Row="0" Style="{StaticResource ValueText}" FontWeight="Bold"   Text="{Binding NodesCount}"/>
+                                    </Grid>
+                                </Border>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+
+                    <Style x:Key="ItemStyle" TargetType="{x:Type ListBoxItem}">
+                        <Setter Property="OverridesDefaultStyle" Value="True"/>
+                        <Setter Property="Margin" Value="3"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ListBoxItem">
+                                    <Border Name="selectionBorder" CornerRadius="4" HorizontalAlignment="Stretch" VerticalAlignment="Top" 
+                                BorderBrush="Transparent" Background="Transparent" BorderThickness="1">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" TargetName="selectionBorder" >
+                                                <Setter.Value>
+                                                    <LinearGradientBrush StartPoint="0, 0" EndPoint="0,1">
+                                                        <GradientStop Color="#FFF5FBFF" Offset="0"/>
+                                                        <GradientStop Color="#FFD1E4F3" Offset="1"/>
+                                                        <GradientStop Color="#FFD0DFEB" Offset="0.518"/>
+                                                        <GradientStop Color="#FFD8E8F5" Offset="0.482"/>
+                                                    </LinearGradientBrush>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="BorderBrush" TargetName="selectionBorder" >
+                                                <Setter.Value>
+                                                    <SolidColorBrush Color="#FFB1C4D3"/>
+                                                </Setter.Value>
+                                            </Setter>
+
+                                        </Trigger>
+
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter Property="Background" TargetName="selectionBorder" >
+                                                <Setter.Value>
+                                                    <LinearGradientBrush StartPoint="0, 0" EndPoint="0,1">
+                                                        <GradientStop Color="#FFF5FBFF" Offset="0"/>
+                                                        <GradientStop Color="#FFAACEE9" Offset="1"/>
+                                                        <GradientStop Color="#FFBFD3E3" Offset="0.518"/>
+                                                        <GradientStop Color="#FFC2DBEF" Offset="0.482"/>
+                                                    </LinearGradientBrush>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="BorderBrush" TargetName="selectionBorder" >
+                                                <Setter.Value>
+                                                    <SolidColorBrush Color="#FF81B6DF"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+
+                    <Style TargetType="Grid" x:Key="DetailedView">
+                        <Setter Property="RenderTransform">
+                            <Setter.Value>
+                                <ScaleTransform CenterX="0" CenterY="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType={x:Type local:Shell}}}" />
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="Visibility" Value="Visible">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" From="0"
+                                                         To="1" Duration="0:0:0.2" FillBehavior="HoldEnd"/>
+                                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                                         To="1" Duration="0:0:0.2" FillBehavior="HoldEnd" From="0"/>
+                                        </Storyboard>
+
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+
+                    <DataTemplate DataType="{x:Type vm:NewTreeViewModel}">
                         <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource ValueText}" FontStyle="Italic" Text="Nodes"/>
-                            <TextBlock Grid.Column="1" Grid.Row="0" Style="{StaticResource ValueText}" FontWeight="Bold"   Text="{Binding NodesCount}"/>
+                            <TextBox HorizontalAlignment="Stretch" Margin="10" VerticalAlignment="Center" Text="{Binding NewTreeName, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                            <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Right">
+                                <Button Style="{DynamicResource {x:Static theme:CustomResources.NormalButtonStyleKey}}" VerticalAlignment="Top" Margin="10" Command="{Binding SaveCommand}">Save</Button>
+                                <Button Style="{DynamicResource {x:Static theme:CustomResources.NormalButtonStyleKey}}" VerticalAlignment="Top" Margin="10" Command="{Binding CloseCommand}">Cancel</Button>
+                            </StackPanel>
                         </Grid>
-                    </Border>
-                </StackPanel>
-            </Border>
-        </DataTemplate>
-
-        <Style x:Key="ItemStyle" TargetType="{x:Type ListBoxItem}">
-            <Setter Property="OverridesDefaultStyle" Value="True"/>
-            <Setter Property="Margin" Value="3"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="ListBoxItem">
-                        <Border Name="selectionBorder" CornerRadius="4" HorizontalAlignment="Stretch" VerticalAlignment="Top" 
-                                BorderBrush="Transparent" Background="Transparent" BorderThickness="1">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" TargetName="selectionBorder" >
-                                    <Setter.Value>
-                                        <LinearGradientBrush StartPoint="0, 0" EndPoint="0,1">
-                                            <GradientStop Color="#FFF5FBFF" Offset="0"/>
-                                            <GradientStop Color="#FFD1E4F3" Offset="1"/>
-                                            <GradientStop Color="#FFD0DFEB" Offset="0.518"/>
-                                            <GradientStop Color="#FFD8E8F5" Offset="0.482"/>
-                                        </LinearGradientBrush>
-                                    </Setter.Value>
-                                </Setter>
-                                <Setter Property="BorderBrush" TargetName="selectionBorder" >
-                                    <Setter.Value>
-                                        <SolidColorBrush Color="#FFB1C4D3"/>
-                                    </Setter.Value>
-                                </Setter>
-                                
-                            </Trigger>
-
-                            <Trigger Property="IsSelected" Value="True">
-                                <Setter Property="Background" TargetName="selectionBorder" >
-                                    <Setter.Value>
-                                        <LinearGradientBrush StartPoint="0, 0" EndPoint="0,1">
-                                            <GradientStop Color="#FFF5FBFF" Offset="0"/>
-                                            <GradientStop Color="#FFAACEE9" Offset="1"/>
-                                            <GradientStop Color="#FFBFD3E3" Offset="0.518"/>
-                                            <GradientStop Color="#FFC2DBEF" Offset="0.482"/>
-                                        </LinearGradientBrush>
-                                    </Setter.Value>
-                                </Setter>
-                                <Setter Property="BorderBrush" TargetName="selectionBorder" >
-                                    <Setter.Value>
-                                        <SolidColorBrush Color="#FF81B6DF"/>
-                                    </Setter.Value>
-                                </Setter>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style TargetType="Grid" x:Key="DetailedView">
-            <Setter Property="RenderTransform">
-                <Setter.Value>
-                    <ScaleTransform CenterX="0" CenterY="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType={x:Type local:Shell}}}" />
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <Trigger Property="Visibility" Value="Visible">
-                    <Trigger.EnterActions>
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" From="0"
-                                                         To="1" Duration="0:0:0.2" FillBehavior="HoldEnd"/>
-                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY"
-                                                         To="1" Duration="0:0:0.2" FillBehavior="HoldEnd" From="0"/>
-                            </Storyboard>
-
-                        </BeginStoryboard>
-                    </Trigger.EnterActions>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-        
+                        
+                    </DataTemplate>
+                </ResourceDictionary>
     </Window.Resources>
     <Grid Background="{StaticResource WindowBackground}">
         <Grid.RowDefinitions>
@@ -282,7 +300,7 @@
                         </Button>
                     </Grid>
                     <Border Grid.Row="1" CornerRadius="0,0,3,3" Opacity="1" Background="#FFFFFF" Margin="2,0,2,2" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" >
-                        
+                        <ContentControl Content="{Binding Path=CurrentDetailedView}"/>
                     </Border>
                 </Grid>
             </Border>
