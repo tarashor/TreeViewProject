@@ -11,10 +11,7 @@
         WindowState="Maximized"
         >
     <Window.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="OrgChartTreeViewItemStyle.xaml" />
-            </ResourceDictionary.MergedDictionaries>
+            
             <conv:NullToVisibilityConverter x:Key="NullToVisibility"/>
             <Style x:Key="AnimationBorder" TargetType="Border">
                 <Setter Property="Background">
@@ -189,7 +186,28 @@
                 </Style.Triggers>
             </Style>
 
-            <DataTemplate DataType="{x:Type vm:NewTreeViewModel}">
+        <DataTemplate DataType="{x:Type vm:DetailedTreeModelView}">
+            <TreeView Name="tree" ItemsSource="{Binding Roots}" Width="400" Height="300">
+                <TreeView.Resources>
+                    <ResourceDictionary>
+                        <ResourceDictionary.MergedDictionaries>
+                            <ResourceDictionary Source="OrgChartTreeViewItemStyle.xaml" />
+                        </ResourceDictionary.MergedDictionaries>
+                        <HierarchicalDataTemplate DataType="{x:Type vm:Node}" ItemsSource="{Binding Children}">
+                            <TextBlock Text="{Binding Data}" />
+                        </HierarchicalDataTemplate>
+                    </ResourceDictionary>
+                </TreeView.Resources>
+
+                <TreeView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Grid HorizontalAlignment="Center" IsItemsHost="True" />
+                    </ItemsPanelTemplate>
+                </TreeView.ItemsPanel>
+            </TreeView>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:NewTreeViewModel}">
                 <Grid Width="400" Height="300">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
@@ -206,7 +224,7 @@
                 </Grid>
 
             </DataTemplate>
-        </ResourceDictionary>
+
     </Window.Resources>
     <Grid Background="{StaticResource WindowBackground}">
         <Grid.RowDefinitions>

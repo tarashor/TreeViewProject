@@ -12,6 +12,14 @@ namespace TreeViewProject.ViewModels
         private const string nodesCountAttribute = "nodescount";
 
         private Node _root;
+
+        public Node Root
+        {
+            get { return _root; }
+            set { _root = value;
+            OnPropertyChanged("Root");
+            }
+        }
         private string _name;
 
         public string Name

@@ -134,7 +134,9 @@ namespace TreeViewProject.ViewModels
 
         private void ViewTree(object selectedItem)
         {
-            
+            DetailedTreeModelView treeView = new DetailedTreeModelView(selectedItem as Tree);
+            treeView.CloseView += new EventHandler(newTreeVW_CloseView);
+            CurrentDetailedView = treeView;
         }
 
         private bool CanCreateTree(object selectedItem)

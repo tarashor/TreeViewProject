@@ -2,34 +2,34 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Collections.ObjectModel;
 
 namespace TreeViewProject.ViewModels
 {
     public class DetailedTreeModelView:DetailedViewModelBase
     {
-        private string _newTreeName = string.Empty;
-        private const string NewTreeNameProperty = "NewTreeName";
-        public string NewTreeName 
+        private Tree _tree = null;
+
+        private const string RootProperty = "Root";
+        private ObservableCollection<Node> _roots;
+        public ObservableCollection<Node> Roots 
         {
-            get 
+            get
             {
-                return _newTreeName;
-            }
-            set 
-            {
-                _newTreeName = value;
-                OnPropertyChanged(NewTreeNameProperty);
+                if (_roots == null)
+                {
+                    _roots = new ObservableCollection<Node>();
+                    _roots.Add(_tree.Root);
+                }
+                return _roots;
             }
         }
 
-        public DetailedTreeModelView()
+        public DetailedTreeModelView(Tree tree)
         {
-            Title = "Create new tree";
+            _tree = tree;
+            Title = tree.Name;
         }
 
-        protected override bool CanSave(object param)
-        {
-            return false;
-        }
     }
 }
