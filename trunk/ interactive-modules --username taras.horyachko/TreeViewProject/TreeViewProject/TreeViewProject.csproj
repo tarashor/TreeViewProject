@@ -63,6 +63,7 @@
     </Compile>
     <Compile Include="Converters\NullToVisibilityConverter.cs" />
     <Compile Include="Utils\DelegateCommand.cs" />
+    <Compile Include="ViewModels\DetailedTreeModelView.cs" />
     <Compile Include="ViewModels\DetailedViewModelBase.cs" />
     <Compile Include="ViewModels\NewTreeViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />

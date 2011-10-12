@@ -5,7 +5,7 @@ using System.Text;
 
 namespace TreeViewProject.ViewModels
 {
-    public class NewTreeViewModel : DetailedViewModelBase
+    public class DetailedTreeModelView:DetailedViewModelBase
     {
         private string _newTreeName = string.Empty;
         private const string NewTreeNameProperty = "NewTreeName";
@@ -22,7 +22,7 @@ namespace TreeViewProject.ViewModels
             }
         }
 
-        public NewTreeViewModel()
+        public DetailedTreeModelView()
         {
             Title = "Create new tree";
         }

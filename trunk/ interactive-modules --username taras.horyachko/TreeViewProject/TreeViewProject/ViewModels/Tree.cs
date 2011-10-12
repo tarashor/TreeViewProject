@@ -6,7 +6,7 @@ using System.Xml;
 
 namespace TreeViewProject.ViewModels
 {
-    public class Tree :ViewModelBase
+    public class Tree : ViewModelBase
     {
         private const string nameAttribute = "name";
         private const string nodesCountAttribute = "nodescount";
