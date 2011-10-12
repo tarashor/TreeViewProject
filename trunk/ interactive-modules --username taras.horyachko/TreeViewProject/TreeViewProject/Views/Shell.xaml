@@ -4,17 +4,37 @@
         xmlns:theme="clr-namespace:ThemesPack;assembly=ThemesPack"
         xmlns:vm="clr-namespace:TreeViewProject.ViewModels"
         xmlns:local="clr-namespace:TreeViewProject.Views"
+        xmlns:conv="clr-namespace:TreeViewProject.Converters"
         xmlns:System="clr-namespace:System;assembly=mscorlib"
         Title="Shell" Height="300" Width="300"
         WindowStyle="None"
         WindowState="Maximized"
         >
     <Window.Resources>
+        <conv:NullToVisibilityConverter x:Key="NullToVisibility"/>
         <Style x:Key="AnimationBorder" TargetType="Border">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <SolidColorBrush Color="#FFD0E1F5"/>
+                </Setter.Value>
+            </Setter>
             <Setter Property="Height" Value="15"/>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Height" Value="60"/>
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetProperty="Height" To="80"></DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                    <Trigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetProperty="Height" To="20"></DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.ExitActions>
                 </Trigger>
             </Style.Triggers>
         </Style>
@@ -23,12 +43,20 @@
         <SolidColorBrush x:Key="DetailedViewHeaderBrush" Color="#FF769BCB"/>
         
         <SolidColorBrush x:Key="asadsad" Color="#FFADD8"/>
+        
         <LinearGradientBrush x:Key="TreeBackground" StartPoint="0,0" EndPoint="0,1">
             <LinearGradientBrush.GradientStops>
                 <GradientStop Color="#F3C04A" Offset="0" />
                 <GradientStop Color="#E9890A" Offset="1" />
             </LinearGradientBrush.GradientStops>
         </LinearGradientBrush>
+        <LinearGradientBrush x:Key="WindowBackground" StartPoint="0,0" EndPoint="0,1">
+            <LinearGradientBrush.GradientStops>
+                <GradientStop Color="#FFE8F1FF" Offset="1"/>
+                <GradientStop Color="#FFFFFFFF" Offset="0"/>
+            </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+        
 
         <Style TargetType="TextBlock" x:Key="TrimmingTextBlock">
             <Setter Property="TextTrimming" Value="CharacterEllipsis" />
@@ -157,42 +185,71 @@
             </Style.Triggers>
         </Style>
 
+        
     </Window.Resources>
-    <Grid>
-        <GroupBox Header="Trees" Margin="50, 50, 50, 100" Name="groupBox1" >
+    <Grid Background="{StaticResource WindowBackground}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Background="{StaticResource DetailedViewHeaderBrush}">
             <Grid>
-                <ListBox ItemsSource="{Binding Trees}"
-                         BorderThickness="0"
-                         ItemContainerStyle="{StaticResource ItemStyle}"
-                         ItemTemplate="{StaticResource TreeDataTemplate}"
-                         />
-            </Grid>
-        </GroupBox>
-        <Border Style="{StaticResource AnimationBorder}"
-            CornerRadius="5,5,0,0" 
-                BorderBrush="DarkGray" 
-                BorderThickness="1" 
-                Background="Transparent" 
-                VerticalAlignment="Bottom" 
-                Margin="20,20,20,0">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <TextBlock Text="ToolBox" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                <Border Grid.Row="1" CornerRadius="0" BorderBrush="Gray">
-                    <StackPanel Orientation="Horizontal">
-                        <Button Style="{DynamicResource {x:Static theme:CustomResources.NormalButtonStyleKey}}" VerticalAlignment="Top" Margin="10" Command="{Binding NewTreeCommand}">New</Button>
-                        <Button Style="{DynamicResource {x:Static theme:CustomResources.NormalButtonStyleKey}}" VerticalAlignment="Top" Margin="10" Command="{Binding NewTreeCommand}">Delete</Button>
-                        <Button Style="{DynamicResource {x:Static theme:CustomResources.NormalButtonStyleKey}}" VerticalAlignment="Top" Margin="10" Command="{Binding NewTreeCommand}">View</Button>
-                        <Button Style="{DynamicResource {x:Static theme:CustomResources.NormalButtonStyleKey}}" VerticalAlignment="Top" Margin="10" Command="{Binding CloseCommand}">Close</Button>
-                    </StackPanel>
-                </Border>
+                <TextBlock HorizontalAlignment="Left" 
+                           VerticalAlignment="Center" 
+                           Foreground="White"
+                           FontWeight="Bold"
+                           FontSize="16"
+                           Text="Tree Viewer"
+                           Margin="5"
+                           />
+                <Button Command="{Binding CloseCommand}" 
+                    HorizontalAlignment="Right"
+                    Margin="7" 
+                    Background="{x:Null}" 
+                    BorderBrush="{x:Null}" 
+                    Style="{DynamicResource {x:Static theme:CustomResources.ButtonWithBorderGlowTemplateKey}}" 
+                    Width="20" Height="20" x:Name="PART_CloseButton" ToolTip="Close" Focusable="False" IsTabStop="False">
+                    <Path Data="M0.5,0.5 L18.5,18.5 M 18.5,0.5 L 0.5,18.5" Stretch="Uniform" StrokeThickness="3" Stroke="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Button>
             </Grid>
         </Border>
+        <Grid Grid.Row="1">
+            <GroupBox Header="Trees" Margin="50, 50, 50, 100" Name="groupBox1" BorderThickness="2" >
+                <Grid>
+                    <ListBox ItemsSource="{Binding Trees}"
+                             BorderThickness="0"
+                             Background="Transparent"
+                             ItemContainerStyle="{StaticResource ItemStyle}"
+                             ItemTemplate="{StaticResource TreeDataTemplate}"
+                         />
+                </Grid>
+            </GroupBox>
+            <Border Style="{StaticResource AnimationBorder}"
+                    CornerRadius="5,5,0,0" 
+                    BorderBrush="DarkGray" 
+                    BorderThickness="1" 
+                    VerticalAlignment="Bottom" 
+                    Margin="20,20,20,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="ToolBox" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                    <Border Grid.Row="1" CornerRadius="0" BorderBrush="Gray" Background="#FFE3EDF9" Margin="2">
+                        <StackPanel Orientation="Horizontal">
+                            <Button Style="{DynamicResource {x:Static theme:CustomResources.NormalButtonStyleKey}}" VerticalAlignment="Top" Margin="10" Command="{Binding NewTreeCommand}">New</Button>
+                            <Button Style="{DynamicResource {x:Static theme:CustomResources.NormalButtonStyleKey}}" VerticalAlignment="Top" Margin="10" Command="{Binding DeleteTreeCommand}">Delete</Button>
+                            <Button Style="{DynamicResource {x:Static theme:CustomResources.NormalButtonStyleKey}}" VerticalAlignment="Top" Margin="10" Command="{Binding ViewTreeCommand}">View</Button>
+                            <Button Style="{DynamicResource {x:Static theme:CustomResources.NormalButtonStyleKey}}" VerticalAlignment="Top" Margin="10" Command="{Binding CloseCommand}">Close</Button>
 
-        <!--<Grid Style="{StaticResource DetailedView}" Visibility="{Binding PNormalGradientBrushKeyte, Converter={StaticResource MaximizedViewStateToVisibility}}">
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <Grid Grid.Row="1" Style="{StaticResource DetailedView}" Visibility="{Binding Path=CurrentDetailedView, Converter={StaticResource NullToVisibility}}">
             <Border Background="Black" Opacity="0.4" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch">
             </Border>
             <Border Margin="50" CornerRadius="3" Opacity="1" Background="{StaticResource DetailedViewHeaderBrush}" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" >
@@ -213,14 +270,14 @@
                                        FontSize="14"
                                        Text="{Binding Name}">
                         </TextBlock>
-                        <Button Command="{Binding CloseCommand}" 
+                        <Button Command="{Binding CurrentDetailedView.CloseCommand}" 
                                     HorizontalAlignment="Right" 
                                     Grid.Column="1"
                                     Margin="5" 
                                     Background="{x:Null}" 
                                     BorderBrush="{x:Null}" 
                                     Style="{DynamicResource {x:Static theme:CustomResources.ButtonWithBorderGlowTemplateKey}}" 
-                                    Width="15" Height="15" x:Name="PART_CloseButton" ToolTip="Close" Focusable="False" IsTabStop="False">
+                                    Width="15" Height="15" ToolTip="Close" Focusable="False" IsTabStop="False">
                             <Path Data="M0.5,0.5 L18.5,18.5 M 18.5,0.5 L 0.5,18.5" Stretch="Uniform" StrokeThickness="1" Stroke="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </Button>
                     </Grid>
@@ -229,6 +286,6 @@
                     </Border>
                 </Grid>
             </Border>
-        </Grid>-->
+        </Grid>
     </Grid>
 </Window>
