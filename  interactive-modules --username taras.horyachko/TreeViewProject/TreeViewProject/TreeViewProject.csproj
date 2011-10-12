@@ -61,7 +61,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Converters\NullToVisibilityConverter.cs" />
     <Compile Include="Utils\DelegateCommand.cs" />
+    <Compile Include="ViewModels\DetailedViewModelBase.cs" />
+    <Compile Include="ViewModels\NewTreeViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\Shell.xaml.cs">
