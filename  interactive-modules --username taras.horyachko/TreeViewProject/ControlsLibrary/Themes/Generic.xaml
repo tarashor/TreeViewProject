@@ -3,5 +3,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="Forms/FormsThemes.xaml"/>
+        <ResourceDictionary Source="/ControlsLibrary;component/Controls/NavigationPane/Themes/NavigationPane.generic.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

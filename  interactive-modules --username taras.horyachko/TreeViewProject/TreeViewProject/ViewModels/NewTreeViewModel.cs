@@ -29,7 +29,7 @@ namespace TreeViewProject.ViewModels
 
         protected override bool CanSave(object param)
         {
-            return false;
+            return !string.IsNullOrEmpty(_newTreeName);
         }
     }
 }

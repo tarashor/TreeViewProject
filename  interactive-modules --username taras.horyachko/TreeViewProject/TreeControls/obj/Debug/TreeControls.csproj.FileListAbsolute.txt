@@ -10,3 +10,15 @@ D:\programs\Eleks\C# testing\TreeViewProject\TreeControls\obj\Debug\GenerateReso
 D:\programs\Eleks\C# testing\TreeViewProject\TreeControls\obj\Debug\GenerateResource.write.1.tlog
 D:\programs\Eleks\C# testing\TreeViewProject\TreeControls\obj\Debug\TreeControls.dll
 D:\programs\Eleks\C# testing\TreeViewProject\TreeControls\obj\Debug\TreeControls.pdb
+D:\WORK\Pet\TreeViewProject\TreeControls\bin\Debug\TreeControls.dll
+D:\WORK\Pet\TreeViewProject\TreeControls\bin\Debug\TreeControls.pdb
+D:\WORK\Pet\TreeViewProject\TreeControls\obj\Debug\ResolveAssemblyReference.cache
+D:\WORK\Pet\TreeViewProject\TreeControls\obj\Debug\TreeControls_MarkupCompile.cache
+D:\WORK\Pet\TreeViewProject\TreeControls\obj\Debug\TreeControls_MarkupCompile.lref
+D:\WORK\Pet\TreeViewProject\TreeControls\obj\Debug\Themes\Generic.baml
+D:\WORK\Pet\TreeViewProject\TreeControls\obj\Debug\TreeControls.g.resources
+D:\WORK\Pet\TreeViewProject\TreeControls\obj\Debug\TreeControls.Properties.Resources.resources
+D:\WORK\Pet\TreeViewProject\TreeControls\obj\Debug\GenerateResource.read.1.tlog
+D:\WORK\Pet\TreeViewProject\TreeControls\obj\Debug\GenerateResource.write.1.tlog
+D:\WORK\Pet\TreeViewProject\TreeControls\obj\Debug\TreeControls.dll
+D:\WORK\Pet\TreeViewProject\TreeControls\obj\Debug\TreeControls.pdb

@@ -34,9 +34,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationFramework.Classic" />
     <Reference Include="RibbonControlsLibrary, Version=4.0.0.11019, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -50,9 +52,9 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Forms\FormsThemes.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="Controls\NavigationPane\Themes\NavigationPane.generic.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -60,7 +62,12 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\NavigationPane\NavigationPane.cs" />
+    <Compile Include="Controls\NavigationPane\NavigationPaneItem.cs" />
+    <Compile Include="Converters\BooleanToVisibilityConverterEx.cs" />
     <Compile Include="Forms\AeroWindow.cs" />
+    <Compile Include="Helpers\MonitorResize.cs" />
+    <Compile Include="Controls\Popup\CustomPopup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -83,6 +90,12 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ThemesPack\ThemesPack.csproj">
+      <Project>{F9A7079B-0D31-4222-8A8D-CA1820A2095B}</Project>
+      <Name>ThemesPack</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

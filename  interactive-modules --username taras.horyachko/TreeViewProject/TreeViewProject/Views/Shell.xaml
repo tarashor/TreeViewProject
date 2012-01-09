@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:TreeViewProject.Views"
         xmlns:conv="clr-namespace:TreeViewProject.Converters"
         xmlns:System="clr-namespace:System;assembly=mscorlib"
+        xmlns:ctrls="clr-namespace:ControlsLibrary.Controls;assembly=ControlsLibrary"
         Title="Shell" Height="300" Width="300"
         WindowStyle="None"
         WindowState="Maximized"
         >
     <Window.Resources>
-            
             <conv:NullToVisibilityConverter x:Key="NullToVisibility"/>
             <Style x:Key="AnimationBorder" TargetType="Border">
                 <Setter Property="Background">
@@ -227,11 +227,20 @@
 
     </Window.Resources>
     <Grid Background="{StaticResource WindowBackground}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Border Background="{StaticResource DetailedViewHeaderBrush}">
+        <ctrls:NavigationPane Grid.RowSpan="2" Grid.Column="0">
+            <ctrls:NavigationPaneItem >
+                
+            </ctrls:NavigationPaneItem>
+        </ctrls:NavigationPane>
+        <Border Grid.Column="1" Background="{StaticResource DetailedViewHeaderBrush}">
             <Grid>
                 <TextBlock HorizontalAlignment="Left" 
                            VerticalAlignment="Center" 
@@ -252,7 +261,7 @@
                 </Button>
             </Grid>
         </Border>
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" Grid.Column="1">
             <GroupBox Header="Trees" Margin="50, 50, 50, 100" Name="groupBox1" BorderThickness="2" >
                 <Grid>
                     <ListBox Name="ListTrees"  ItemsSource="{Binding Trees}"
@@ -280,15 +289,14 @@
                             <Button Style="{DynamicResource {x:Static theme:CustomResources.NormalButtonStyleKey}}" VerticalAlignment="Top" Margin="10" Command="{Binding NewTreeCommand}">New</Button>
                             <Button Style="{DynamicResource {x:Static theme:CustomResources.NormalButtonStyleKey}}" VerticalAlignment="Top" Margin="10" Command="{Binding DeleteTreeCommand}" CommandParameter="{Binding SelectedItem, ElementName=ListTrees}">Delete</Button>
                             <Button Style="{DynamicResource {x:Static theme:CustomResources.NormalButtonStyleKey}}" VerticalAlignment="Top" Margin="10" Command="{Binding ViewTreeCommand}" CommandParameter="{Binding SelectedItem, ElementName=ListTrees}">View</Button>
-                            <Button Style="{DynamicResource {x:Static theme:CustomResources.NormalButtonStyleKey}}" VerticalAlignment="Top" Margin="10" Command="{Binding CloseCommand}">Close</Button>
-
+                            <Button Style="{DynamicResource {x:Static theme:CustomResources.NormalButtonStyleKey}}" VerticalAlignment="Top" Margin="10" Command="{Binding SaveCommand}">Save</Button>
                         </StackPanel>
                     </Border>
                 </Grid>
             </Border>
         </Grid>
 
-        <Grid Grid.Row="1" Style="{StaticResource DetailedView}" Visibility="{Binding Path=CurrentDetailedView, Converter={StaticResource NullToVisibility}}">
+        <Grid Grid.Row="1" Grid.Column="1" Style="{StaticResource DetailedView}" Visibility="{Binding Path=CurrentDetailedView, Converter={StaticResource NullToVisibility}}">
             <Border Background="Black" Opacity="0.4" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch">
             </Border>
             <Border CornerRadius="3" Opacity="1" Background="{StaticResource DetailedViewHeaderBrush}" HorizontalAlignment="Center"  VerticalAlignment="Center" >
