@@ -58,6 +58,7 @@
     </Compile>
     <Compile Include="Converters\NullToVisibilityConverter.cs" />
     <Compile Include="Utils\DelegateCommand.cs" />
+    <Compile Include="Utils\XMLParser.cs" />
     <Compile Include="ViewModels\DetailedTreeModelView.cs" />
     <Compile Include="ViewModels\DetailedViewModelBase.cs" />
     <Compile Include="ViewModels\NewTreeViewModel.cs" />
@@ -94,6 +95,10 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ControlsLibrary\ControlsLibrary.csproj">
+      <Project>{00BED9CB-FC03-492C-BA4C-0B811B8CE14A}</Project>
+      <Name>ControlsLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ThemesPack\ThemesPack.csproj">
       <Project>{F9A7079B-0D31-4222-8A8D-CA1820A2095B}</Project>
       <Name>ThemesPack</Name>
@@ -104,6 +109,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="bin\Debug\" />
     <Folder Include="Controls\" />
     <Folder Include="Models\" />
   </ItemGroup>
@@ -118,7 +124,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="bin\Debug\data.xml" />
+    <Content Include="data.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

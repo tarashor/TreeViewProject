@@ -3,82 +3,86 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml;
+using TreeViewProject.Utils;
 
 namespace TreeViewProject.ViewModels
 {
     public class Tree : ViewModelBase
     {
-        private const string nameAttribute = "name";
-        private const string nodesCountAttribute = "nodescount";
+        private XmlNode _nodeXml;
+        private XmlNode NodeXml
+        {
+            get { return _nodeXml; }
+            set { _nodeXml = value; }
+        }
 
         private Node _root;
-
         public Node Root
         {
             get { return _root; }
-            set { _root = value;
-            OnPropertyChanged("Root");
+            set 
+            { 
+                _root = value;
+                OnPropertyChanged("Root");
             }
         }
+        
         private string _name;
-
         public string Name
         {
             get { return _name; }
-            set { _name = value;
-            OnPropertyChanged("Name");
+            set 
+            { 
+                _name = value;
+                if (_nodeXml != null)
+                    XMLParser.SetAttribute(_nodeXml, XMLParser.XML_TREE_ATTRIBUTE_NAME, value);
+                OnPropertyChanged("Name");
             }
         }
+        
         private int _nodesCount;
-
         public int NodesCount
         {
             get { return _nodesCount; }
-            set { _nodesCount = value;
-            OnPropertyChanged("NodesCount");
+            private set 
+            { 
+                _nodesCount = value;
+                if (_nodeXml != null)
+                    XMLParser.SetAttribute(_nodeXml, XMLParser.XML_TREE_ATTRIBUTE_NODES_COUNT, value.ToString());
+                OnPropertyChanged("NodesCount");
             }
         }
-        private XmlDocument _xmlDocument;
 
-        //_xmlDocument.SelectSingleNode(string.Format("tree[@name='{0}']"
-
-        public Tree(XmlDocument xmlDocument, XmlNode root)
+        private Tree() 
         {
-            _xmlDocument = xmlDocument;
-            _name = root.Attributes[nameAttribute].Value;
-            _nodesCount = int.Parse(root.Attributes[nodesCountAttribute].Value);
-            _root = CreateSubTreeFromXML(root.SelectSingleNode("node"), null);
+            _root = null;
+            _nodesCount = 0;
+            _name = null;
+            _nodeXml = null;
         }
 
-
-        private Node CreateSubTreeFromXML(XmlNode xmlNode, Node parent)
+        public static Tree ParseTree(XmlNode root)
         {
-            string data = xmlNode.Attributes["data"].Value;
-            Node root = new Node(xmlNode, data, parent);
-            if (xmlNode.HasChildNodes)
-            {
-                foreach (XmlNode childXml in xmlNode.ChildNodes)
-                {
-                    Node child = CreateSubTreeFromXML(childXml, root);
-                    root.Children.Add(child);
-                }
-            }
-            return root;
+            Tree tree = new Tree();
+            tree._name = XMLParser.GetAttributeValue(root, XMLParser.XML_TREE_ATTRIBUTE_NAME).ToString();
+            string nodesCount = XMLParser.GetAttributeValue(root, XMLParser.XML_TREE_ATTRIBUTE_NODES_COUNT).ToString();
+            int.TryParse(nodesCount, out tree._nodesCount);
+            tree._root=Node.ParseXmlNode(root.FirstChild, null);
+            tree._nodeXml = root;
+            return tree;
         }
 
-        public void CreateNode(Node parent, string data)
+        public static Tree CreateTree(XmlNode trees)
         {
-            XmlNode childXml = _xmlDocument.CreateNode("element", "node", "");
-            XmlNode attr = _xmlDocument.CreateNode(XmlNodeType.Attribute, "data", "");
-            attr.Value = data;
-            childXml.Attributes.SetNamedItem(attr);
-            Node child = new Node(childXml, data, parent);
-            parent.AddChild(child);
+            Tree tree = new Tree();
+            XmlNode xmltree = XMLParser.AddChild(trees, XMLParser.XML_TREE_NAME);
+            tree._nodeXml = xmltree;
+            return tree;
         }
 
-        public void DeleteNode(Node node)
+        public static void DeleteTree(XmlNode trees, Tree tree)
         {
-            node.Parent.RemoveChild(node);
+            XMLParser.RemoveChild(trees, tree.NodeXml);
         }
     }
 }

@@ -17,12 +17,15 @@ namespace TreeViewProject.ViewModels
         private const string CurrentDetailedViewProperty = "CurrentDetailedView";
 
         private XmlDocument _xmlDocument;
+        private string _fileName;
+
 
         #region Commands
         private DelegateCommand _closeCommand;
         private DelegateCommand _newTreeCommand;
         private DelegateCommand _deleteTreeCommand;
         private DelegateCommand _viewTreeCommand;
+        private DelegateCommand _saveCommand;
 
         public ICommand CloseCommand
         {
@@ -67,6 +70,17 @@ namespace TreeViewProject.ViewModels
                 return _viewTreeCommand;
             }
         }
+
+        public ICommand SaveCommand
+        {
+            get
+            {
+                if (_saveCommand == null)
+                    _saveCommand = new DelegateCommand(Save, CanSave);
+
+                return _saveCommand;
+            }
+        }
         #endregion
 
 
@@ -95,8 +109,8 @@ namespace TreeViewProject.ViewModels
 
         public ShellViewModel(string fileName)
         {
-            _xmlDocument = new XmlDocument();
-            _xmlDocument.Load(fileName);
+            _xmlDocument = XMLParser.LoadXml(fileName);
+            _fileName = fileName;
             FillTrees();
             CurrentDetailedView = null;
         }
@@ -107,7 +121,7 @@ namespace TreeViewProject.ViewModels
             XmlNodeList treesXml = _xmlDocument.SelectNodes("trees/tree");
             foreach (XmlNode treeXml in treesXml)
             {
-                Tree tree = new Tree(_xmlDocument, treeXml);
+                Tree tree = Tree.ParseTree(treeXml);
                 Trees.Add(tree);
             }
         }
@@ -154,8 +168,9 @@ namespace TreeViewProject.ViewModels
 
         void newTreeVW_SaveView(object sender, EventArgs e)
         {
-            Tree tree = new Tree(_xmlDocument, _xmlDocument.CreateNode("element", "tree", ""));
-            tree.Name = "ttt";
+            NewTreeViewModel newTreeVW = sender as NewTreeViewModel;
+            Tree tree = Tree.CreateTree(_xmlDocument.SelectSingleNode("trees"));
+            tree.Name = newTreeVW.NewTreeName;
             Trees.Add(tree);
         }
 
@@ -177,7 +192,22 @@ namespace TreeViewProject.ViewModels
 
         private void DeleteTree(object selectedItem)
         {
-           
+            Tree selectedTree = selectedItem as Tree;
+            if (selectedTree != null)
+            {
+                Trees.Remove(selectedTree);
+                Tree.DeleteTree(_xmlDocument.SelectSingleNode("trees"), selectedTree);
+            }
+        }
+
+        private bool CanSave(object selectedItem)
+        {
+            return true;
+        }
+
+        private void Save(object selectedItem)
+        {
+            XMLParser.SaveXml(_xmlDocument, _fileName);
         }
 
     }

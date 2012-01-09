@@ -19,6 +19,16 @@ namespace ThemesPack
         private static ComponentResourceKey _backgroundGradientBrush;
         private static ComponentResourceKey _hoverGradientBrush;
 
+        private static ComponentResourceKey _borderBrush;
+        private static ComponentResourceKey _labelHighlightBrush;
+        private static ComponentResourceKey _disabledForegroundBrush;
+        private static ComponentResourceKey _darkNormalSolidBrush2;
+        private static ComponentResourceKey _pressedSolidBrush;
+        private static ComponentResourceKey _tabItemDisabledBackgroundBrush;
+        private static ComponentResourceKey _hSplitterBackgroundBrush;
+        private static ComponentResourceKey _captionBrush;
+        private static ComponentResourceKey _sideBarBackgroundBrush;
+
         #endregion
 
         #region Styles
@@ -27,6 +37,8 @@ namespace ThemesPack
         private static ComponentResourceKey _normalButtonStyle;
         private static ComponentResourceKey _buttonFocusVisual;
         private static ComponentResourceKey _buttonScaleTransform;
+        
+        
 
         #endregion
         
@@ -238,6 +250,123 @@ namespace ThemesPack
                 return _buttonScaleTransform;
             }
         }
+
+        public static ResourceKey BorderBrushKey
+        {
+            get
+            {
+                if (_borderBrush == null)
+                {
+                    _borderBrush = new ComponentResourceKey(typeof(CustomResources), CustomResourcesID.BorderBrush);
+                }
+
+                return _borderBrush;
+            }
+        }
+
+        public static ResourceKey LabelHighlightBrushKey
+        {
+            get
+            {
+                if (_labelHighlightBrush == null)
+                {
+                    _labelHighlightBrush = new ComponentResourceKey(typeof(CustomResources), CustomResourcesID.LabelHighlightBrush);
+                }
+
+                return _labelHighlightBrush;
+            }
+        }
+
+        public static ResourceKey DisabledForegroundBrushKey
+        {
+            get
+            {
+                if (_disabledForegroundBrush == null)
+                {
+                    _disabledForegroundBrush = new ComponentResourceKey(typeof(CustomResources), CustomResourcesID.DisabledForegroundBrush);
+                }
+
+                return _disabledForegroundBrush;
+            }
+        }
+
+        public static ResourceKey DarkNormalSolidBrush2Key
+        {
+            get
+            {
+                if (_darkNormalSolidBrush2 == null)
+                {
+                    _darkNormalSolidBrush2 = new ComponentResourceKey(typeof(CustomResources), CustomResourcesID.DarkNormalSolidBrush2);
+                }
+
+                return _darkNormalSolidBrush2;
+            }
+        }
+
+        public static ResourceKey PressedSolidBrushKey
+        {
+            get
+            {
+                if (_pressedSolidBrush == null)
+                {
+                    _pressedSolidBrush = new ComponentResourceKey(typeof(CustomResources), CustomResourcesID.PressedSolidBrush);
+                }
+
+                return _pressedSolidBrush;
+            }
+        }
+
+        public static ResourceKey TabItemDisabledBackgroundBrushKey
+        {
+            get
+            {
+                if (_tabItemDisabledBackgroundBrush == null)
+                {
+                    _tabItemDisabledBackgroundBrush = new ComponentResourceKey(typeof(CustomResources), CustomResourcesID.TabItemDisabledBackgroundBrush);
+                }
+
+                return _tabItemDisabledBackgroundBrush;
+            }
+        }
+
+        public static ResourceKey SideBarBackgroundBrushKey
+        {
+            get
+            {
+                if (_sideBarBackgroundBrush == null)
+                {
+                    _sideBarBackgroundBrush = new ComponentResourceKey(typeof(CustomResources), CustomResourcesID.SideBarBackgroundBrush);
+                }
+
+                return _sideBarBackgroundBrush;
+            }
+        }
+
+        public static ResourceKey HSplitterBackgroundBrushKey
+        {
+            get
+            {
+                if (_hSplitterBackgroundBrush == null)
+                {
+                    _hSplitterBackgroundBrush = new ComponentResourceKey(typeof(CustomResources), CustomResourcesID.HSplitterBackgroundBrush);
+                }
+
+                return _hSplitterBackgroundBrush;
+            }
+        }
+
+        public static ResourceKey CaptionBrushKey
+        {
+            get
+            {
+                if (_captionBrush == null)
+                {
+                    _captionBrush = new ComponentResourceKey(typeof(CustomResources), CustomResourcesID.CaptionBrush);
+                }
+
+                return _captionBrush;
+            }
+        }
     }
 
     internal enum CustomResourcesID
@@ -265,6 +394,14 @@ namespace ThemesPack
         ButtonFocusVisual,
         ButtonScaleTransform,
 
-        
+        BorderBrush,
+        LabelHighlightBrush,
+        DisabledForegroundBrush,
+        DarkNormalSolidBrush2,
+        PressedSolidBrush,
+        TabItemDisabledBackgroundBrush,
+        SideBarBackgroundBrush,
+        HSplitterBackgroundBrush,
+        CaptionBrush
     }
 }

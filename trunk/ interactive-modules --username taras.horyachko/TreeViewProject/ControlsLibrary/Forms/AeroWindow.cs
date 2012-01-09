@@ -11,6 +11,8 @@ using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using Microsoft.Windows.Controls.Ribbon;
+using ControlsLibrary.Controls;
+using ControlsLibrary.Helpers;
 
 namespace ControlsLibrary.Forms
 {
@@ -163,11 +165,11 @@ namespace ControlsLibrary.Forms
             /// </summary>
             protected Button SettingsButton;
 
-            /// <summary>
+            /*/// <summary>
             /// This field represents EagleHelp Button.
             /// </summary>
             protected EagleSplitButton EagleHelpButton;
-
+        */
             /// <summary>
             /// This field represents ribbonContextualGroups.
             /// </summary>
@@ -197,7 +199,7 @@ namespace ControlsLibrary.Forms
             /// </summary>
             public static DependencyProperty EagleHomeVisibilityProperty =
                 DependencyProperty.Register("EagleHomeVisibility", typeof(Visibility),
-                typeof(EagleWindow), new FrameworkPropertyMetadata(null));
+                typeof(AeroWindow), new FrameworkPropertyMetadata(null));
 
 
             /// <summary>
@@ -216,13 +218,13 @@ namespace ControlsLibrary.Forms
             /// The field that defines a SettingsVisibility dependency property.
             /// </summary>
             public static readonly DependencyProperty SettingsVisibilityProperty =
-                DependencyProperty.Register("SettingsVisibility", typeof(Visibility), typeof(EagleWindow), new UIPropertyMetadata(Visibility.Collapsed));
+                DependencyProperty.Register("SettingsVisibility", typeof(Visibility), typeof(AeroWindow), new UIPropertyMetadata(Visibility.Collapsed));
 
 
             /// <summary>
             /// Initializes static members of the <see cref="EagleWindow"/> class.
             /// </summary>
-            static EagleWindow()
+            static AeroWindow()
             {
                 DefaultStyleKeyProperty.OverrideMetadata(typeof(AeroWindow),
                                                          new FrameworkPropertyMetadata(
@@ -260,7 +262,7 @@ namespace ControlsLibrary.Forms
             {
                 Border rootBorder = GetChildControl<Border>("PART_RootBorder");
                 if (rootBorder != null)
-                    rootBorder.Background = IsGlassEnabled() ? Brushes.Transparent : FindResource(Eagle.Common.ThemePack.ApplicationSkinResources.WindowBackgroundBrushKey) as Brush;
+                    rootBorder.Background = Brushes.Transparent;//IsGlassEnabled() ? Brushes.Transparent : FindResource(Eagle.Common.ThemePack.ApplicationSkinResources.WindowBackgroundBrushKey) as Brush;
             }
 
             /// <summary>
@@ -300,7 +302,7 @@ namespace ControlsLibrary.Forms
                 // Ribbon Menu
                 ribbonMenu = GetChildControl<Microsoft.Windows.Controls.Ribbon.Ribbon>(PART_RibbonMenu);
 
-                EagleHelpButton = GetChildControl<EagleSplitButton>(PART_Help);
+                //EagleHelpButton = GetChildControl<EagleSplitButton>(PART_Help);
 
                 // Title Bar
                 Border titleBar = GetChildControl<Border>(PART_TitleBar);

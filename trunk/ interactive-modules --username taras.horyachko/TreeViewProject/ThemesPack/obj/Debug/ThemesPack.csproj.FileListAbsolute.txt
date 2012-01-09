@@ -12,3 +12,15 @@ D:\programs\Eleks\C# testing\TreeViewProject\ThemesPack\obj\Debug\GenerateResour
 D:\programs\Eleks\C# testing\TreeViewProject\ThemesPack\obj\Debug\GenerateResource.write.1.tlog
 D:\programs\Eleks\C# testing\TreeViewProject\ThemesPack\obj\Debug\ThemesPack.dll
 D:\programs\Eleks\C# testing\TreeViewProject\ThemesPack\obj\Debug\ThemesPack.pdb
+D:\WORK\Pet\TreeViewProject\ThemesPack\bin\Debug\ThemesPack.dll
+D:\WORK\Pet\TreeViewProject\ThemesPack\bin\Debug\ThemesPack.pdb
+D:\WORK\Pet\TreeViewProject\ThemesPack\obj\Debug\ResolveAssemblyReference.cache
+D:\WORK\Pet\TreeViewProject\ThemesPack\obj\Debug\Themes\Generic.baml
+D:\WORK\Pet\TreeViewProject\ThemesPack\obj\Debug\ThemesPack_MarkupCompile.cache
+D:\WORK\Pet\TreeViewProject\ThemesPack\obj\Debug\ThemesPack.g.resources
+D:\WORK\Pet\TreeViewProject\ThemesPack\obj\Debug\ThemesPack.Properties.Resources.resources
+D:\WORK\Pet\TreeViewProject\ThemesPack\obj\Debug\GenerateResource.read.1.tlog
+D:\WORK\Pet\TreeViewProject\ThemesPack\obj\Debug\GenerateResource.write.1.tlog
+D:\WORK\Pet\TreeViewProject\ThemesPack\obj\Debug\ThemesPack.dll
+D:\WORK\Pet\TreeViewProject\ThemesPack\obj\Debug\ThemesPack.pdb
+D:\WORK\Pet\TreeViewProject\ThemesPack\obj\Debug\ThemesPack_MarkupCompile.lref

@@ -3,7 +3,22 @@
                     xmlns:local="clr-namespace:ThemesPack"
                     >
     <SolidColorBrush x:Key="{x:Static local:CustomResources.InverseBorderBrushKey}" Color="#FF707070" />
+    <SolidColorBrush x:Key="{x:Static local:CustomResources.BorderBrushKey}" Color="#FF547cb3" />
+    <SolidColorBrush x:Key="{x:Static local:CustomResources.LabelHighlightBrushKey}" Color= "#FFFFFF" />
+    <SolidColorBrush x:Key="{x:Static local:CustomResources.DisabledForegroundBrushKey}" Color="#ADADAD" />
+    <SolidColorBrush x:Key="{x:Static local:CustomResources.DarkNormalSolidBrush2Key}" Color="#FFB9DA89"/>
+    <SolidColorBrush x:Key="{x:Static local:CustomResources.PressedSolidBrushKey}" Color="#FFC2E097"/>
+    <SolidColorBrush x:Key="{x:Static local:CustomResources.TabItemDisabledBackgroundBrushKey}" Color="#F4F4F4"/>
+    <SolidColorBrush x:Key="{x:Static local:CustomResources.SideBarBackgroundBrushKey}" Color="#FFebf3f9"/>
+    <SolidColorBrush x:Key="{x:Static local:CustomResources.CaptionBrushKey}" Color= "#FF000000" />
 
+    <LinearGradientBrush x:Key="{x:Static local:CustomResources.HSplitterBackgroundBrushKey}" EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Color="#FFABABAB" Offset="0.509"/>
+        <GradientStop Color="#FFABABAB" Offset="1"/>
+        <GradientStop Color="#FFBCBCBC" Offset="0.455"/>
+        <GradientStop Color="#FFE3E3E3" Offset="0"/>
+    </LinearGradientBrush>
+    
     
     <LinearGradientBrush x:Key="{x:Static local:CustomResources.NormalGradientBrushKey}" EndPoint="0,1" StartPoint="0,0">
         <GradientStop Color="#FFE3EFFF" Offset="0"/>
