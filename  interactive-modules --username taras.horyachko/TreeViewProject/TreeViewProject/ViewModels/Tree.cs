@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 using TreeViewProject.Utils;
+using System.Collections.ObjectModel;
 
 namespace TreeViewProject.ViewModels
 {
@@ -26,7 +27,7 @@ namespace TreeViewProject.ViewModels
                 OnPropertyChanged("Root");
             }
         }
-        
+
         private string _name;
         public string Name
         {

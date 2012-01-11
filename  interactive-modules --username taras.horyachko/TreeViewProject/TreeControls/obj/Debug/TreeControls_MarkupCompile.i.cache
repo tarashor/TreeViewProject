@@ -4,7 +4,7 @@
 library
 C#
 .cs
-D:\WORK\Pet\TreeViewProject\TreeControls\obj\Debug\
+D:\WORK\treeviewer\ interactive-modules --username taras.horyachko\TreeViewProject\TreeControls\obj\Debug\
 TreeControls
 none
 false
@@ -12,8 +12,8 @@ DEBUG;TRACE
 
 1-731644535
 
-5150563305
-12-1547151337
+5-308263471
+12-1381780322
 Themes\Generic.xaml;
 
 True
