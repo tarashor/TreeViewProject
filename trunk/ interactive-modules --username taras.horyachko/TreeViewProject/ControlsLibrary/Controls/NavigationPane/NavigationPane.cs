@@ -925,7 +925,7 @@ namespace ControlsLibrary.Controls
         #endregion
 
         #region Class Events and Handlers
-
+        double previousWidth = 0;
         /// <summary>
         /// Called when toggle view is unchecked.
         /// </summary>
@@ -947,7 +947,6 @@ namespace ControlsLibrary.Controls
         /// <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
         private void OnToggleViewChecked(object sender, RoutedEventArgs e)
         {
-
             if (CollaspeClick != null && !byPassToggle)
             {
                 CollaspeClick(sender, e);

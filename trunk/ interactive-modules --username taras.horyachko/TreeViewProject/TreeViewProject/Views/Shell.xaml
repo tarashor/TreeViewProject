@@ -44,6 +44,7 @@
             <SolidColorBrush x:Key="DetailedViewHeaderBrush" Color="#FF769BCB"/>
 
             <SolidColorBrush x:Key="asadsad" Color="#FFADD8"/>
+        
 
             <LinearGradientBrush x:Key="TreeBackground" StartPoint="0,0" EndPoint="0,1">
                 <LinearGradientBrush.GradientStops>
@@ -51,13 +52,13 @@
                     <GradientStop Color="#E9890A" Offset="1" />
                 </LinearGradientBrush.GradientStops>
             </LinearGradientBrush>
-            <LinearGradientBrush x:Key="WindowBackground" StartPoint="0,0" EndPoint="0,1">
+            <!--<LinearGradientBrush x:Key="WindowBackground" StartPoint="0,0" EndPoint="0,1">
                 <LinearGradientBrush.GradientStops>
                     <GradientStop Color="#FFE8F1FF" Offset="1"/>
                     <GradientStop Color="#FFFFFFFF" Offset="0"/>
                 </LinearGradientBrush.GradientStops>
-            </LinearGradientBrush>
-
+            </LinearGradientBrush>-->
+            <SolidColorBrush x:Key="WindowBackground" Color="#D0E0F5"/>
 
             <Style TargetType="TextBlock" x:Key="TrimmingTextBlock">
                 <Setter Property="TextTrimming" Value="CharacterEllipsis" />
@@ -227,20 +228,11 @@
 
     </Window.Resources>
     <Grid Background="{StaticResource WindowBackground}">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <ctrls:NavigationPane Grid.RowSpan="2" Grid.Column="0">
-            <ctrls:NavigationPaneItem >
-                
-            </ctrls:NavigationPaneItem>
-        </ctrls:NavigationPane>
-        <Border Grid.Column="1" Background="{StaticResource DetailedViewHeaderBrush}">
+        <Border Background="{StaticResource DetailedViewHeaderBrush}">
             <Grid>
                 <TextBlock HorizontalAlignment="Left" 
                            VerticalAlignment="Center" 
@@ -261,42 +253,91 @@
                 </Button>
             </Grid>
         </Border>
-        <Grid Grid.Row="1" Grid.Column="1">
-            <GroupBox Header="Trees" Margin="50, 50, 50, 100" Name="groupBox1" BorderThickness="2" >
-                <Grid>
-                    <ListBox Name="ListTrees"  ItemsSource="{Binding Trees}"
-                             BorderThickness="0"
-                             Background="Transparent"
-                             ItemContainerStyle="{StaticResource ItemStyle}"
-                             ItemTemplate="{StaticResource TreeDataTemplate}"
-                         />
-                </Grid>
-            </GroupBox>
-            <Border Style="{StaticResource AnimationBorder}"
-                    CornerRadius="5,5,0,0" 
-                    BorderBrush="DarkGray" 
-                    BorderThickness="1" 
-                    VerticalAlignment="Bottom" 
-                    Margin="20,20,20,0">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <TextBlock Text="ToolBox" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                    <Border Grid.Row="1" CornerRadius="0" BorderBrush="Gray" Background="#FFE3EDF9" Margin="2">
-                        <StackPanel Orientation="Horizontal">
-                            <Button Style="{DynamicResource {x:Static theme:CustomResources.NormalButtonStyleKey}}" VerticalAlignment="Top" Margin="10" Command="{Binding NewTreeCommand}">New</Button>
-                            <Button Style="{DynamicResource {x:Static theme:CustomResources.NormalButtonStyleKey}}" VerticalAlignment="Top" Margin="10" Command="{Binding DeleteTreeCommand}" CommandParameter="{Binding SelectedItem, ElementName=ListTrees}">Delete</Button>
-                            <Button Style="{DynamicResource {x:Static theme:CustomResources.NormalButtonStyleKey}}" VerticalAlignment="Top" Margin="10" Command="{Binding ViewTreeCommand}" CommandParameter="{Binding SelectedItem, ElementName=ListTrees}">View</Button>
-                            <Button Style="{DynamicResource {x:Static theme:CustomResources.NormalButtonStyleKey}}" VerticalAlignment="Top" Margin="10" Command="{Binding SaveCommand}">Save</Button>
-                        </StackPanel>
-                    </Border>
-                </Grid>
+        <!-- CONTENT -->
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="1" Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" MinWidth="30"/>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <ctrls:NavigationPane BorderBrush="#547CB3" BorderThickness="1" Header="Trees" PanePlacement="Left" MinWidth="30" NavigationItemsFixed="True">
+                    <ctrls:NavigationPaneItem Header="Trees">
+                        <Grid>
+                            <ListBox Name="ListTrees"  ItemsSource="{Binding Trees}"
+                                 BorderThickness="0"
+                                 Background="Transparent"
+                                 ItemContainerStyle="{StaticResource ItemStyle}"
+                                 ItemTemplate="{StaticResource TreeDataTemplate}"
+                             />
+                        </Grid>
+                    </ctrls:NavigationPaneItem>
+                </ctrls:NavigationPane>
+                <GridSplitter Grid.Column="1" 
+                              Width="5" 
+                              Height="Auto" 
+                              VerticalAlignment="Stretch" 
+                              ResizeDirection="Columns" 
+                              Background="Transparent"
+                              ResizeBehavior="PreviousAndNext"/>
+                <Border Grid.Column="2" Background="White" BorderBrush="#547CB3" BorderThickness="1" CornerRadius="5">
+                    <Grid>
+                        <TreeView Name="tree" ItemsSource="{Binding SelectedItem, ElementName=ListTrees, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <TreeView.Resources>
+                                <ResourceDictionary>
+                                    <ResourceDictionary.MergedDictionaries>
+                                        <ResourceDictionary Source="OrgChartTreeViewItemStyle.xaml" />
+                                    </ResourceDictionary.MergedDictionaries>
+                                    <HierarchicalDataTemplate DataType="{x:Type vm:Node}" ItemsSource="{Binding Children}">
+                                        <TextBlock Text="{Binding Data}" />
+                                    </HierarchicalDataTemplate>
+                                </ResourceDictionary>
+                            </TreeView.Resources>
+
+                            <TreeView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <Grid HorizontalAlignment="Center" IsItemsHost="True" />
+                                </ItemsPanelTemplate>
+                            </TreeView.ItemsPanel>
+                        </TreeView>
+
+                        <Border Style="{StaticResource AnimationBorder}"
+                            CornerRadius="5,5,0,0" 
+                            BorderBrush="DarkGray" 
+                            BorderThickness="1" 
+                            VerticalAlignment="Bottom" 
+                            Margin="20,20,20,0">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="ToolBox" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                                <Border Grid.Row="1" CornerRadius="0" BorderBrush="Gray" Background="#FFE3EDF9" Margin="2">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Style="{DynamicResource {x:Static theme:CustomResources.NormalButtonStyleKey}}" VerticalAlignment="Top" Margin="10" Command="{Binding NewTreeCommand}">New</Button>
+                                        <Button Style="{DynamicResource {x:Static theme:CustomResources.NormalButtonStyleKey}}" VerticalAlignment="Top" Margin="10" Command="{Binding DeleteTreeCommand}" CommandParameter="{Binding SelectedItem, ElementName=ListTrees}">Delete</Button>
+                                        <Button Style="{DynamicResource {x:Static theme:CustomResources.NormalButtonStyleKey}}" VerticalAlignment="Top" Margin="10" Command="{Binding ViewTreeCommand}" CommandParameter="{Binding SelectedItem, ElementName=ListTrees}">View</Button>
+                                        <Button Style="{DynamicResource {x:Static theme:CustomResources.NormalButtonStyleKey}}" VerticalAlignment="Top" Margin="10" Command="{Binding SaveCommand}">Save</Button>
+                                    </StackPanel>
+                                </Border>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Border>
+        </Grid>
+            <Border Grid.Row="2" BorderBrush="LightGray" BorderThickness="1" CornerRadius="3" Background="White" Margin="10,0,10,10">
+                <TextBlock Margin="5" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Gray">Ready</TextBlock>
             </Border>
+            
         </Grid>
 
-        <Grid Grid.Row="1" Grid.Column="1" Style="{StaticResource DetailedView}" Visibility="{Binding Path=CurrentDetailedView, Converter={StaticResource NullToVisibility}}">
+        <Grid Grid.Row="1" Style="{StaticResource DetailedView}" Visibility="{Binding Path=CurrentDetailedView, Converter={StaticResource NullToVisibility}}">
             <Border Background="Black" Opacity="0.4" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch">
             </Border>
             <Border CornerRadius="3" Opacity="1" Background="{StaticResource DetailedViewHeaderBrush}" HorizontalAlignment="Center"  VerticalAlignment="Center" >
