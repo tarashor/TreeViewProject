@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-D:\WORK\Pet\TreeViewProject\TreeViewProject\obj\x86\Debug\
+D:\WORK\treeviewer\ interactive-modules --username taras.horyachko\TreeViewProject\TreeViewProject\obj\x86\Debug\
 TreeViewProject
 none
 false
 DEBUG;TRACE
-D:\WORK\Pet\TreeViewProject\TreeViewProject\App.xaml
+D:\WORK\treeviewer\ interactive-modules --username taras.horyachko\TreeViewProject\TreeViewProject\App.xaml
 2-567747388
 1-1753504501
-16-1143854823
-121575154199
+17-862496319
+1291571927
 Views\OrgChartTreeViewItemStyle.xaml;Views\Shell.xaml;
 
 True

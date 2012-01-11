@@ -10,7 +10,7 @@ using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Shapes;
-using Microsoft.Windows.Controls.Ribbon;
+//using Microsoft.Windows.Controls.Ribbon;
 using ControlsLibrary.Controls;
 using ControlsLibrary.Helpers;
 
@@ -33,7 +33,7 @@ namespace ControlsLibrary.Forms
     [TemplatePart(Name = PART_TitleBar, Type = typeof(Border))]
     [TemplatePart(Name = PART_Username, Type = typeof(TextBlock))]
     [TemplatePart(Name = PART_UsernamePanel, Type = typeof(Panel))]
-    [TemplatePart(Name = PART_RibbonMenu, Type = typeof(Microsoft.Windows.Controls.Ribbon.Ribbon))]
+    //[TemplatePart(Name = PART_RibbonMenu, Type = typeof(Microsoft.Windows.Controls.Ribbon.Ribbon))]
     [TemplatePart(Name = PART_NavigationPane, Type = typeof(NavigationPane))]
     [TemplatePart(Name = PART_NavigationPlaceColumn, Type = typeof(ColumnDefinition))]
     [TemplatePart(Name = PART_NavigationSplitterColumn, Type = typeof(ColumnDefinition))]
@@ -158,7 +158,7 @@ namespace ControlsLibrary.Forms
             /// <summary>
             /// This field represents ribbonMenu.
             /// </summary>
-            private Ribbon ribbonMenu;
+            //private Ribbon ribbonMenu;
         
             /// <summary>
             /// This field represents Settings Button.
@@ -173,10 +173,10 @@ namespace ControlsLibrary.Forms
             /// <summary>
             /// This field represents ribbonContextualGroups.
             /// </summary>
-            private ObservableCollection<RibbonContextualTabGroup> ribbonContextualGroups;
+            //private ObservableCollection<RibbonContextualTabGroup> ribbonContextualGroups;
 
 #endregion
-            /// <summary>
+            /*/// <summary>
             /// Gets the ribbon contextual groups.
             /// </summary>
             /// <value>
@@ -192,7 +192,7 @@ namespace ControlsLibrary.Forms
                     }
                     return ribbonContextualGroups;
                 }
-            }
+            }*/
 
             /// <summary>
             /// The field that defines a EagleHomeVisibility dependency property.
@@ -301,7 +301,7 @@ namespace ControlsLibrary.Forms
                 }
 
                 // Ribbon Menu
-                ribbonMenu = GetChildControl<Microsoft.Windows.Controls.Ribbon.Ribbon>(PART_RibbonMenu);
+                //ribbonMenu = GetChildControl<Microsoft.Windows.Controls.Ribbon.Ribbon>(PART_RibbonMenu);
 
                 //EagleHelpButton = GetChildControl<EagleSplitButton>(PART_Help);
 
@@ -329,11 +329,11 @@ namespace ControlsLibrary.Forms
 
                 maximizeButton.IsChecked = (this.WindowState == WindowState.Maximized ? true : false);
 
-                var am = ribbonMenu.ApplicationMenu;
-                if (am == null)
-                {
-                    throw new Exception("Application menu not initialized.");
-                }
+                //var am = ribbonMenu.ApplicationMenu;
+                //if (am == null)
+                //{
+                //    throw new Exception("Application menu not initialized.");
+                //}
 
                 //ExtendGlass(this, new Thickness(-1));
                 ExtendGlass(this, GlassWindowClientThickness);
@@ -472,7 +472,7 @@ namespace ControlsLibrary.Forms
             /// <value>
             /// The ribbon menu.
             /// </value>
-            protected Ribbon RibbonMenu { get { return ribbonMenu; } }
+            //protected Ribbon RibbonMenu { get { return ribbonMenu; } }
 
 
             #region P/Invoke and Helper Method

@@ -10,6 +10,7 @@
     <node data="root">
       <node data="child1"></node>
       <node data="child2"></node>
+        <node data="child3"></node>
     </node>
   </tree>
 </trees>

@@ -8,13 +8,7 @@
   </tree>
   <tree name="tree2" nodescount="3">
     <node data="root">
-      <node data="child1">
-        <node data="child1"></node>
-        <node data="child2">
-          <node data="child1"></node>
-          <node data="child2"></node>
-        </node>
-      </node>
+      <node data="child1"></node>
       <node data="child2"></node>
     </node>
   </tree>
