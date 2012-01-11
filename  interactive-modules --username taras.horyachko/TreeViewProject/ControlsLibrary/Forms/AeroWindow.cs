@@ -270,6 +270,7 @@ namespace ControlsLibrary.Forms
             /// </summary>
             private void AttachToVisualTree()
             {
+                
                 SetupRootBackground();
 
                 // Close Button

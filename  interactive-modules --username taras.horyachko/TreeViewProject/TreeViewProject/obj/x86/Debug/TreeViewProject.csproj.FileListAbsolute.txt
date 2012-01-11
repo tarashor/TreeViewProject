@@ -23,33 +23,3 @@ D:\programs\Eleks\C# testing\TreeViewProject\TreeViewProject\bin\Debug\ThemesPac
 D:\programs\Eleks\C# testing\TreeViewProject\TreeViewProject\bin\Debug\ThemesPack.pdb
 D:\programs\Eleks\C# testing\TreeViewProject\TreeViewProject\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs
 D:\programs\Eleks\C# testing\TreeViewProject\TreeViewProject\obj\x86\Debug\TreeViewProject_MarkupCompile.lref
-D:\WORK\Pet\TreeViewProject\TreeViewProject\obj\x86\Debug\TreeViewProject.exe
-D:\WORK\Pet\TreeViewProject\TreeViewProject\obj\x86\Debug\TreeViewProject.pdb
-D:\WORK\Pet\TreeViewProject\TreeViewProject\bin\Debug\TreeViewProject.exe
-D:\WORK\Pet\TreeViewProject\TreeViewProject\bin\Debug\TreeViewProject.pdb
-D:\WORK\Pet\TreeViewProject\TreeViewProject\bin\Debug\ThemesPack.dll
-D:\WORK\Pet\TreeViewProject\TreeViewProject\bin\Debug\TreeControls.dll
-D:\WORK\Pet\TreeViewProject\TreeViewProject\bin\Debug\ThemesPack.pdb
-D:\WORK\Pet\TreeViewProject\TreeViewProject\bin\Debug\TreeControls.pdb
-D:\WORK\Pet\TreeViewProject\TreeViewProject\obj\x86\Debug\ResolveAssemblyReference.cache
-D:\WORK\Pet\TreeViewProject\TreeViewProject\obj\x86\Debug\Views\Shell.g.cs
-D:\WORK\Pet\TreeViewProject\TreeViewProject\obj\x86\Debug\App.g.cs
-D:\WORK\Pet\TreeViewProject\TreeViewProject\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs
-D:\WORK\Pet\TreeViewProject\TreeViewProject\obj\x86\Debug\TreeViewProject_MarkupCompile.cache
-D:\WORK\Pet\TreeViewProject\TreeViewProject\obj\x86\Debug\TreeViewProject_MarkupCompile.lref
-D:\WORK\Pet\TreeViewProject\TreeViewProject\obj\x86\Debug\Views\Shell.baml
-D:\WORK\Pet\TreeViewProject\TreeViewProject\obj\x86\Debug\TreeViewProject.g.resources
-D:\WORK\Pet\TreeViewProject\TreeViewProject\obj\x86\Debug\TreeViewProject.Properties.Resources.resources
-D:\WORK\Pet\TreeViewProject\TreeViewProject\obj\x86\Debug\GenerateResource.read.1.tlog
-D:\WORK\Pet\TreeViewProject\TreeViewProject\obj\x86\Debug\GenerateResource.write.1.tlog
-D:\WORK\Pet\TreeViewProject\TreeViewProject\obj\x86\Debug\Views\OrgChartTreeViewItemStyle.baml
-D:\WORK\Pet\TreeViewProject\TreeViewProject\bin\Debug\data.xml
-D:\WORK\Pet\TreeViewProject\TreeViewProject\obj\x86\Debug\TreeViewProject_Content.g.cs
-D:\WORK\Pet\TreeViewProject\TreeViewProject\bin\Debug\ControlsLibrary.dll
-D:\WORK\Pet\TreeViewProject\TreeViewProject\bin\Debug\RibbonControlsLibrary.dll
-D:\WORK\Pet\TreeViewProject\TreeViewProject\bin\Debug\Microsoft.Windows.Shell.dll
-D:\WORK\Pet\TreeViewProject\TreeViewProject\bin\Debug\ControlsLibrary.pdb
-D:\WORK\Pet\TreeViewProject\TreeViewProject\bin\Debug\RibbonControlsLibrary.pdb
-D:\WORK\Pet\TreeViewProject\TreeViewProject\bin\Debug\RibbonControlsLibrary.xml
-D:\WORK\Pet\TreeViewProject\TreeViewProject\bin\Debug\Microsoft.Windows.Shell.pdb
-D:\WORK\Pet\TreeViewProject\TreeViewProject\bin\Debug\Microsoft.Windows.Shell.xml

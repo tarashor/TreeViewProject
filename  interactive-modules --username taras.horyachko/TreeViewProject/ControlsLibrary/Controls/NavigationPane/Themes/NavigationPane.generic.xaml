@@ -32,7 +32,7 @@
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
                     <ContentControl FocusVisualStyle="{TemplateBinding FocusVisualStyle}">
                         <Grid Width="26" Background="Transparent">
-                            <Path Stretch="Fill" Stroke="{DynamicResource {x:Static res:CustomResources.LabelHighlightBrushKey}}" Data="M3.0625,11.5625 L7.03125,7.59375 10.937254,11.499754" 
+                            <Path Stretch="Fill" Stroke="White" Data="M3.0625,11.5625 L7.03125,7.59375 10.937254,11.499754" 
                               Width="8" Height="4" RenderTransformOrigin="0.5,0.5" x:Name="path" Margin="4,0,0,0">
                                 <Path.RenderTransform>
                                     <TransformGroup>
@@ -43,7 +43,8 @@
                                     </TransformGroup>
                                 </Path.RenderTransform>
                             </Path>
-                            <Path Stretch="Fill" Stroke="{DynamicResource {x:Static res:CustomResources.LabelHighlightBrushKey}}" Data="M3.0625,11.5625 L7.03125,7.59375 10.937254,11.499754" 
+                            <!--{DynamicResource {x:Static res:CustomResources.LabelHighlightBrushKey}}-->
+                            <Path Stretch="Fill" Stroke="White" Data="M3.0625,11.5625 L7.03125,7.59375 10.937254,11.499754" 
                               Width="8" Height="4" RenderTransformOrigin="0.5,0.5" x:Name="path1" Margin="0,0,4,0">
                                 <Path.RenderTransform>
                                     <TransformGroup>
@@ -361,7 +362,7 @@
                                         <Button DockPanel.Dock="Right" Width="22" Height="22" x:Name="PART_SettingsButton" Visibility="{TemplateBinding SettingsButtonVisibility}"
                                                 Style="{StaticResource ButtonStyle}" ToolTip="{TemplateBinding SettingsTooltip}"
                                                 TabIndex="1">
-                                            <Image Source="/Eagle.Windows;component/Images/Settings2.png" Margin="1" />
+                                            <Image Source="/ControlsLibrary;component/Images/Settings2.png" Margin="1" />
                                         </Button>
                                         <Image x:Name="PART_Image" Margin="5,0,0,0" Width="20" Height="20" Source="{TemplateBinding HeaderImage}" DockPanel.Dock="Left"
                                                Visibility="{TemplateBinding HeaderImageVisibility}"/>
