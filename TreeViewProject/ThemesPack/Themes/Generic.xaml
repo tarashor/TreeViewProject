@@ -1,0 +1,313 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:ThemesPack"
+    xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Classic"
+    xmlns:mwt="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"             
+    xmlns:s="clr-namespace:System;assembly=mscorlib">
+
+    <SolidColorBrush x:Key="{x:Static local:CustomResources.InverseBorderBrushKey}" Color="#FF707070" />
+
+    <LinearGradientBrush x:Key="{x:Static local:CustomResources.NormalGradientBrushKey}" EndPoint="0,1" StartPoint="0,0">
+        <GradientStop Color="#FFE3EFFF" Offset="0"/>
+        <GradientStop Color="#FFD4E5FC" Offset="0.2"/>
+        <GradientStop Color="#FFB3CFF5" Offset="0.6"/>
+        <GradientStop Color="#FF89B3ED" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="{x:Static local:CustomResources.InverseNormalGradientBrushKey}" EndPoint="0,1" StartPoint="0,0">
+        <GradientStop Color="#FFF3F3F3" Offset="0"/>
+        <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+        <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+        <GradientStop Color="#FFCDCDCD" Offset="1"/>
+    </LinearGradientBrush>
+
+    <!--Left Menu Button  -->
+    <LinearGradientBrush x:Key="{x:Static local:CustomResources.ButtonNormalBrushKey}" StartPoint="0, 0" EndPoint="0,1">
+        <GradientStop Color="#FFF5FBFF" Offset="0"/>
+        <GradientStop Color="#FFD1E4F3" Offset="1"/>
+        <GradientStop Color="#FFD0DFEB" Offset="0.518"/>
+        <GradientStop Color="#FFD8E8F5" Offset="0.482"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="{x:Static local:CustomResources.ButtonSelectedBrushKey}" StartPoint="0, 0" EndPoint="0,1">
+        <GradientStop Color="#FFfdd59a" Offset="0"/>
+        <GradientStop Color="#FFf8de70" Offset="1"/>
+        <GradientStop Color="#FFfdae49" Offset="0.527"/>
+        <GradientStop Color="#FFffbd68" Offset="0.483"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="{x:Static local:CustomResources.ButtonPressedBrushKey}" StartPoint="0, 0" EndPoint="0,1">
+        <GradientStop Color="#FFFFFAD9" Offset="0"/>
+        <GradientStop Color="#FFFFE69E" Offset="1"/>
+        <GradientStop Color="#FFFFD86D" Offset="0.527"/>
+        <GradientStop Color="#FFFFE8A7" Offset="0.483"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="{x:Static local:CustomResources.ButtonHoverBrushKey}" StartPoint="0, 0" EndPoint="0,1">
+        <GradientStop Color="#FFFFFAD9" Offset="0"/>
+        <GradientStop Color="#FFFFE69E" Offset="1"/>
+        <GradientStop Color="#FFFFD86D" Offset="0.527"/>
+        <GradientStop Color="#FFFFE8A7" Offset="0.483"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="{x:Static local:CustomResources.ButtonDarkBrushKey}" EndPoint="0.513,1.09" StartPoint="0.513,-0.052">
+        <GradientStop Color="#FF2A68AD" Offset="0.406"/>
+        <GradientStop Color="#FF519BDD" Offset="0.156"/>
+        <GradientStop Color="#FF165195" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="{x:Static local:CustomResources.ButtonGreenBrushKey}"  EndPoint="0,1" StartPoint="0,0">
+        <GradientStop Color="#FFc5df93" Offset="1"/>
+        <GradientStop Color="#FFe3f7ba" Offset="0"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="{x:Static local:CustomResources.ButtonDarkHoverBrushKey}" EndPoint="0.513,1.09" StartPoint="0.513,-0.052">
+        <GradientStop Color="#FF4F7AAA" Offset="0.369"/>
+        <GradientStop Color="#FFB6CDE2" Offset="0.094"/>
+        <GradientStop Color="#FF145094" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="{x:Static local:CustomResources.BackgroundGradientBrushKey}" EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Color="#FF7DA3D5" Offset="0"/>
+        <GradientStop Color="#FF6A8EBE" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="{x:Static local:CustomResources.HoverGradientBrushKey}" EndPoint="0,1" StartPoint="0,0" SpreadMethod="Reflect">
+        <GradientStop Color="#FFFFF5CB" Offset="0.2"/>
+        <GradientStop Color="#FFFFE290" Offset="0.6"/>
+        <GradientStop Color="#FFFFDB76" Offset="1"/>
+        <GradientStop Color="#FFFFF8D5" Offset="0"/>
+    </LinearGradientBrush>
+
+    <Style x:Key="{x:Static local:CustomResources.ButtonFocusVisualKey}">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Rectangle Margin="2,2,2,2" SnapsToDevicePixels="True" Stroke="#FF000000" StrokeDashArray="1 2" StrokeThickness="1"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <ScaleTransform x:Key="{x:Static local:CustomResources.ButtonScaleTransformKey}" ScaleX=".9" ScaleY=".9"/>
+
+    <SolidColorBrush x:Key="SolidColorBrush1" Color="#00cccccc" />
+
+
+    <Style x:Key="{x:Static local:CustomResources.ButtonWithBorderGlowTemplateKey}" TargetType="{x:Type Button}">
+        <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static local:CustomResources.ButtonFocusVisualKey}}"/>
+        <Setter Property="Background" Value="{DynamicResource {x:Static local:CustomResources.InverseNormalGradientBrushKey}}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static local:CustomResources.InverseBorderBrushKey}}"/>
+        <Setter Property="BorderThickness" Value="1,1,1,1"/>
+        <Setter Property="Foreground" Value="{StaticResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="1,1,1,1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <!--<Microsoft_Windows_Themes:ButtonChrome x:Name="Chrome" SnapsToDevicePixels="True" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" RenderDefaulted="{TemplateBinding Button.IsDefaulted}" RenderMouseOver="{TemplateBinding IsMouseOver}" RenderPressed="{TemplateBinding IsPressed}">-->
+                    <Border Padding="0,0,0,0" BorderThickness="1" CornerRadius="20" Background="{StaticResource SolidColorBrush1}" x:Name="border">
+                        <Border.BorderBrush>
+                            <LinearGradientBrush EndPoint="0.088,-0.107" StartPoint="-0.186,-0.685" x:Name="storkeGradient">
+                                <GradientStop Color="#FFCBE7FD" Offset="0.102"/>
+                                <GradientStop Color="#FFBFDDF5" Offset="0.698"/>
+                                <GradientStop Color="#FF044982" Offset="0.289"/>
+                                <GradientStop Color="#00FFFFFF" Offset="1"/>
+                                <GradientStop Color="#96F4F4F4" Offset="0.853"/>
+                            </LinearGradientBrush>
+                        </Border.BorderBrush>
+                        <Grid>
+                            <Rectangle Fill="Red" Opacity="0" RadiusX="3" RadiusY="3" x:Name="bgRect"/>
+                            <ContentPresenter x:Name="con" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" RecognizesAccessKey="True"/>
+                        </Grid>
+                    </Border>
+                    <!--</Microsoft_Windows_Themes:ButtonChrome>-->
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard >
+                                    <Storyboard>
+                                        <!--EndPoint="1.271,1.671" StartPoint="0.997,1.093"-->
+                                        <PointAnimation To="1.271,1.671" Storyboard.TargetProperty="EndPoint" Storyboard.TargetName="storkeGradient" Duration="00:00:00.3"/>
+                                        <PointAnimation To="0.997,1.093" Storyboard.TargetProperty="StartPoint" Storyboard.TargetName="storkeGradient" Duration="00:00:00.3"/>
+                                        <DoubleAnimation To=".5"  Storyboard.TargetName="bgRect" Storyboard.TargetProperty="Opacity" Duration="00:00:00.3"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard >
+                                    <Storyboard>
+                                        <!--EndPoint="1.271,1.671" StartPoint="0.997,1.093"-->
+                                        <PointAnimation To="0.088,-0.107" Storyboard.TargetProperty="EndPoint" Storyboard.TargetName="storkeGradient" Duration="00:00:00.3"/>
+                                        <PointAnimation To="-0.186,-0.685" Storyboard.TargetProperty="StartPoint" Storyboard.TargetName="storkeGradient" Duration="00:00:00.3"/>
+                                        <DoubleAnimation To="0"  Storyboard.TargetName="bgRect" Storyboard.TargetProperty="Opacity" Duration="00:00:00.3"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="RenderTransform" Value="{DynamicResource {x:Static local:CustomResources.ButtonScaleTransformKey}}" TargetName="con"/>
+                            <Setter Property="Opacity" Value="1" TargetName="bgRect"/>
+                            <Setter Property="Fill" TargetName="bgRect">
+                                <Setter.Value>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FFFFAEA7" Offset="0"/>
+                                        <GradientStop Color="#FFFF1300" Offset="1"/>
+                                        <GradientStop Color="#FFC52417" Offset="0.522"/>
+                                        <GradientStop Color="#FFE6756C" Offset="0.482"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <!--<Setter Property="RenderDefaulted" TargetName="Chrome" Value="True"/>-->
+                        </Trigger>
+                        <Trigger Property="ToggleButton.IsChecked" Value="True">
+                            <!--<Setter Property="RenderPressed" TargetName="Chrome" Value="True"/>-->
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Foreground" Value="#FFADADAD"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <LinearGradientBrush x:Key="ButtonNormalBackgroundFill" EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Color="#FFFFFFFF" Offset="0"/>
+        <GradientStop Color="#FFF0F0EA" Offset="0.9"/>
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="ButtonBorder" Color="#FF003C74"/>
+
+    <Style x:Key="{x:Static local:CustomResources.NormalButtonStyleKey}" TargetType="{x:Type Button}">
+        <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static local:CustomResources.ButtonFocusVisualKey}}"/>
+        <Setter Property="Background" Value="{DynamicResource {x:Static local:CustomResources.ButtonGreenBrushKey}}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource ButtonBorder}"/>
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="10,5,10,5"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="leftmouseover">
+                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="border" Storyboard.TargetProperty="(UIElement.Opacity)">
+                                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="border" Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[0].(GradientStop.Color)">
+                                <SplineColorKeyFrame KeyTime="00:00:00" Value="#FFDDF3BD"/>
+                                <SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FFFFFFFF"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="border" Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[3].(GradientStop.Color)">
+                                <SplineColorKeyFrame KeyTime="00:00:00" Value="#FFCFEAA9"/>
+                                <SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FFD8EEAB"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="border" Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[2].(GradientStop.Color)">
+                                <SplineColorKeyFrame KeyTime="00:00:00" Value="#FFC2E097"/>
+                                <SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FFC5E28E"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="border" Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+                                <SplineColorKeyFrame KeyTime="00:00:00" Value="#FFB9DA89"/>
+                                <SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FFC9EC88"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)">
+                                <SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF568E1B"/>
+                            </ColorAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="leftdefault">
+                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="border" Storyboard.TargetProperty="(UIElement.Opacity)">
+                                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)">
+                                <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF77C259"/>
+                                <SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF77C259"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="border" Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[3].(GradientStop.Color)">
+                                <SplineColorKeyFrame KeyTime="00:00:00" Value="#FFCFEAA9"/>
+                                <SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FFC3DF9A"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="border" Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[2].(GradientStop.Color)">
+                                <SplineColorKeyFrame KeyTime="00:00:00" Value="#FFC2E097"/>
+                                <SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FFACCE7C"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="border" Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[0].(GradientStop.Color)">
+                                <SplineColorKeyFrame KeyTime="00:00:00" Value="#FFDDF3BD"/>
+                                <SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FFD5EDB2"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="border" Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+                                <SplineColorKeyFrame KeyTime="00:00:00" Value="#FFB9DA89"/>
+                                <SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FF9BBC6A"/>
+                            </ColorAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Border BorderThickness="1,1,1,1" CornerRadius="3,3,3,3"  Margin="0,0,0,0" Opacity="1" x:Name="border" Cursor="Hand" SnapsToDevicePixels="True" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}">
+                        <Border.BorderBrush>
+                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                <GradientStop Color="#FF698a3e" Offset="0"/>
+                                <GradientStop Color="#FF698a3e" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.BorderBrush>
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" RecognizesAccessKey="True"
+                                          x:Name="presenter"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsDefault" Value="True">
+                            <Setter Property="BorderBrush" TargetName="border" Value="#FF698a3e"/>
+                            <Setter Property="BorderThickness" TargetName="border" Value="1"/>
+                            <!--<Setter Property="BitmapEffect" TargetName="border">
+                				<Setter.Value>
+                					<OuterGlowBitmapEffect GlowColor="#FF8CBE72" GlowSize="3"/>
+                				</Setter.Value>
+                			</Setter>-->
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="border">
+                                <Setter.Value>
+                                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                        <GradientStop Color="#FFF3FBE3" Offset="0"/>
+                                        <GradientStop Color="#FFD1E5A8" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="BorderBrush" TargetName="border">
+                                <Setter.Value>
+                                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                        <GradientStop Color="#FF75B116" Offset="0"/>
+                                        <GradientStop Color="#FFA3A69E" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                            <!--<Trigger.ExitActions>
+                				<BeginStoryboard Storyboard="{StaticResource leftdefault}" x:Name="leftdefault_BeginStoryboard"/>
+                			</Trigger.ExitActions>
+                			<Trigger.EnterActions>
+                				<BeginStoryboard Storyboard="{StaticResource leftmouseover}"/>
+                			</Trigger.EnterActions>-->
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="true"/>
+                        <Trigger Property="ToggleButton.IsChecked" Value="true"/>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="#FF808080"/>
+                            <Setter Property="Background" TargetName="border">
+                                <Setter.Value>
+                                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                        <GradientStop Color="#FFE3E3E3" Offset="0"/>
+                                        <GradientStop Color="#FFCBCBCB" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="BorderBrush" TargetName="border" Value="#FF808080" />
+                            <!--<Setter Property="Opacity" Value="0.25" TargetName="presenter" />-->
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

@@ -1,0 +1,484 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"></ResourceDictionary>
+<!--                    xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Classic"
+                    xmlns:Microsoft_Windows_Themes1="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    mc:Ignorable="d"
+                    xmlns:rib="clr-namespace:Microsoft.Windows.Controls.Ribbon;assembly=RibbonControlsLibrary"
+                    xmlns:Forms="clr-namespace:ControlsLibrary.Forms"
+                    xmlns:aero="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
+                    xmlns:controls="clr-namespace:Eagle.Windows.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/PresentationFramework.Aero, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, ProcessorArchitecture=MSIL;component/themes/aero.normalcolor.xaml" />
+        <ResourceDictionary Source="/Eagle.Windows;component/Controls/CustomControls/EagleThemes/EagleSplitButton.generic.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <LinearGradientBrush x:Key="MinMaxButtonHoverBrush" StartPoint="0,0" EndPoint="0,1" >
+        <GradientStop Color="#FF9FDDFE" Offset="0"/>
+        <GradientStop Color="#FF136F9E" Offset="0.7"/>
+        <GradientStop Color="#FF9FDDFE" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="MinMaxButtonPressedBrush" StartPoint="0,0" EndPoint="0,1" >
+        <GradientStop Color="#FF90D8FF" Offset="0"/>
+        <GradientStop Color="#FF2F4C5C" Offset="0.7"/>
+        <GradientStop Color="#FF90D8FF" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="CloseButtonHoverBrush" StartPoint="0,0" EndPoint="0,1" >
+        <GradientStop Color="#FFFFC6B0" Offset="0"/>
+        <GradientStop Color="#FFE2613E" Offset="0.6"/>
+        <GradientStop Color="#FFE2613E" Offset="0.8"/>
+        <GradientStop Color="#FFFFC6B0" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="CloseButtonPressedBrush" StartPoint="0,0" EndPoint="0,1" >
+        <GradientStop Color="#FFF6A696" Offset="0"/>
+        <GradientStop Color="#FFC83C21" Offset="0.6"/>
+        <GradientStop Color="#FFC83C21" Offset="0.8"/>
+        <GradientStop Color="#FFF6A696" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="SysButtonsInsideBrush" StartPoint="0,0" EndPoint="0,1" >
+        <GradientStop Color="#FFFFFFFF" Offset="0"/>
+        <GradientStop Color="#FFEFEFEF" Offset="1"/>
+    </LinearGradientBrush>
+
+    <Style x:Key="WindowSysButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="borer" BorderThickness="1" CornerRadius="2" BorderBrush="#00000000">
+                        <Border x:Name="innerBorer" BorderThickness="1" CornerRadius="2" BorderBrush="#00FFFFFF">
+                            <Grid>
+                                <Rectangle x:Name="rectangle" Opacity="0" Stroke="{x:Null}" RadiusX="2" RadiusY="2">
+                                    <Rectangle.Fill>
+                                        <RadialGradientBrush GradientOrigin="0.477,-0.057">
+                                            <RadialGradientBrush.RelativeTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="2.757" ScaleY="2.757"/>
+                                                    <SkewTransform AngleX="0" AngleY="0" CenterX="0.5" CenterY="0.5"/>
+                                                    <RotateTransform Angle="0" CenterX="0.5" CenterY="0.5"/>
+                                                    <TranslateTransform X="-0.011" Y="0.576"/>
+                                                </TransformGroup>
+                                            </RadialGradientBrush.RelativeTransform>
+                                            <GradientStop Color="#FF87D5FF" Offset="0"/>
+                                            <GradientStop Color="#FF9FDDFE" Offset="1"/>
+                                        </RadialGradientBrush>
+                                    </Rectangle.Fill>
+                                </Rectangle>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" 
+        								SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+        								Content="{TemplateBinding Content}" 
+        								ContentTemplate="{TemplateBinding ContentTemplate}"
+        								RecognizesAccessKey="True"
+        								x:Name="contentPresenter" RenderTransformOrigin="0.5,0.5">
+                                    <ContentPresenter.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                            <SkewTransform AngleX="0" AngleY="0"/>
+                                            <RotateTransform Angle="0"/>
+                                            <TranslateTransform X="0" Y="0"/>
+                                        </TransformGroup>
+                                    </ContentPresenter.RenderTransform>
+                                </ContentPresenter>
+                            </Grid>
+                        </Border>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" TargetName="borer" Value="#4C000000"/>
+                            <Setter Property="BorderBrush" TargetName="innerBorer" Value="#4CFFFFFF"/>
+                            <Setter Property="Opacity" TargetName="rectangle" Value="1"/>
+                            <Setter Property="RenderTransformOrigin" TargetName="contentPresenter" Value="0.5,0.5"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="RenderTransform" TargetName="contentPresenter">
+                                <Setter.Value>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleX="0.9" ScaleY="0.9"/>
+                                        <SkewTransform AngleX="0" AngleY="0"/>
+                                        <RotateTransform Angle="0"/>
+                                        <TranslateTransform X="0" Y="0"/>
+                                    </TransformGroup>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Fill" TargetName="rectangle" Value="{StaticResource MinMaxButtonPressedBrush}"/>
+                        </Trigger>
+                        <!--<Trigger Property="IsKeyboardFocused" Value="True">
+										
+									</Trigger>-->
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Foreground" Value="#FFADADAD"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="MaximinitoggleButtonStyle" TargetType="{x:Type ToggleButton}">
+        <Setter Property="BorderThickness" Value="0,1,1,1"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="#AA464B4A" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="Width" Value="28"/>
+        <Setter Property="Height" Value="20" />
+        <Setter Property="ToolTip" Value="{x:Static localization:EagleResources.Controls_EagleWindow_Command_Minimize_Tolltip}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Grid Height="20">
+                        <Border x:Name="ButtonBorder"
+                                Opacity="1" 
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}" />
+                        <Path x:Name="path"
+                              VerticalAlignment="Center"
+                              HorizontalAlignment="Center"
+                              RenderOptions.EdgeMode="Aliased"
+                              Stroke="{TemplateBinding BorderBrush}"
+                              Fill="{StaticResource SysButtonsInsideBrush}" 
+                              StrokeThickness="1"
+                              Data="M0,1 L10,1 L10,9 L0,9 Z M3,4 L7,4 L7,6 L3,6 Z" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="ToolTip" Value="{x:Static localization:EagleResources.Controls_EagleWindow_Command_Restore_Tolltip}" />
+                            <Setter TargetName="path" Property="Data" Value="M1,3 L10,3 L10,12 L1,12 Z M4,6 L7,6 L7,9 L4,9 Z M3,3 L3,1 L12,1 L12,10 L10,10 L10,3 Z" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="ButtonBorder" Property="Background" Value="{StaticResource MinMaxButtonHoverBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter TargetName="ButtonBorder" Property="Background" Value="{StaticResource MinMaxButtonPressedBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="MinimizeButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="#AA464B4A" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="Width" Value="28"/>
+        <Setter Property="Height" Value="20" />
+        <Setter Property="ToolTip" Value="{x:Static localization:EagleResources.Controls_EagleWindow_Command_Minimize_Tolltip}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid Height="20">
+                        <Border x:Name="ButtonBorder" 
+                                CornerRadius="0,0,0,4" 
+                                Opacity="1" 
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}" />
+                        <Path VerticalAlignment="Center"
+                              HorizontalAlignment="Center"
+                              RenderOptions.EdgeMode="Aliased"
+                              Stroke="{TemplateBinding BorderBrush}"
+                              Fill="{StaticResource SysButtonsInsideBrush}" 
+                              StrokeThickness="1"
+                              Data="M1,6 L11,6 L11,10 L1,10 Z" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="ButtonBorder" Property="Background" Value="{StaticResource MinMaxButtonHoverBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter TargetName="ButtonBorder" Property="Background" Value="{StaticResource MinMaxButtonPressedBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="CloseButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Margin" Value="0,0,1,0"/>
+        <Setter Property="BorderThickness" Value="0,1,1,1"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="#AA464B4A" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="Width" Value="45"/>
+        <Setter Property="Height" Value="20" />
+        <Setter Property="ToolTip" Value="{x:Static localization:EagleResources.Controls_EagleWindow_Command_Close_Tolltip}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid Height="20">
+                        <Border x:Name="ButtonBorder" 
+                                CornerRadius="0,0,4,0" 
+                                Opacity="1" 
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}" />
+                        <Image Source="/Eagle.Windows;component/Images/app_close.png" 
+                               VerticalAlignment="Center" 
+                               RenderOptions.EdgeMode="Aliased"
+                               HorizontalAlignment="Center"
+                               Width="11" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="ButtonBorder" Property="Background" Value="{StaticResource CloseButtonHoverBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter TargetName="ButtonBorder" Property="Background" Value="{StaticResource CloseButtonPressedBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="BackgroundTemplate" TargetType="{x:Type ContentControl}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ContentControl}">
+                    <Grid x:Name="Grid2" VerticalAlignment="Stretch" Height="Auto" RenderTransformOrigin="0.5,0.5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.550727591128872*" />
+                            <RowDefinition Height="0.449272408871128*" />
+                        </Grid.RowDefinitions>
+                        <Grid.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform x:Name="LayoutScaleTransform2" ScaleX="1" ScaleY="1"/>
+                            </TransformGroup>
+                        </Grid.RenderTransform>
+                        <Rectangle Fill="Transparent" RadiusX="5" RadiusY="5" StrokeThickness="3" StrokeMiterLimit="2" StrokeEndLineCap="Flat" StrokeStartLineCap="Flat" StrokeLineJoin="Miter" Grid.Column="0" Grid.ColumnSpan="1" Grid.Row="0" Grid.RowSpan="4" Margin="0,2,0,2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Stroke="#08000000" />
+                        <Rectangle Fill="Transparent" RadiusX="5" RadiusY="5" StrokeThickness="2" StrokeMiterLimit="2" StrokeEndLineCap="Flat" StrokeStartLineCap="Flat" StrokeLineJoin="Miter" Grid.Column="0" Grid.ColumnSpan="1" Grid.Row="0" Grid.RowSpan="4" Margin="1,3,1,3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Stroke="#16000000" />
+                        <Rectangle Fill="Transparent" RadiusX="5" RadiusY="5" StrokeThickness="1" StrokeMiterLimit="2" StrokeEndLineCap="Flat" StrokeStartLineCap="Flat" StrokeLineJoin="Miter" Grid.Column="0" Grid.ColumnSpan="1" Grid.Row="0" Grid.RowSpan="4" Margin="2,4,2,4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Stroke="#24000000" />
+                        <Rectangle Fill="Transparent" RadiusX="5" RadiusY="5" StrokeThickness=".5" StrokeMiterLimit="2" StrokeEndLineCap="Flat" StrokeStartLineCap="Flat" StrokeLineJoin="Miter" Grid.Column="0" Grid.ColumnSpan="1" Grid.Row="0" Grid.RowSpan="4" Margin="3,5,3,5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Stroke="#32000000" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="SplitterBG" TargetType="{x:Type ContentControl}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ContentControl}">
+                    <Grid Height="Auto" Width="1">
+                        <Border BorderBrush="{x:Null}" Background="{x:Null}" BorderThickness="0,0,0,0"/>
+                        <Rectangle Margin="0,2,0,2" Stroke="{x:Null}" Opacity="0.4">
+                            <Rectangle.Fill>
+                                <LinearGradientBrush EndPoint="1.002,0.5" StartPoint="-0.014,0.5">
+                                    <GradientStop Color="#FF000000" Offset="0.547"/>
+                                    <GradientStop Color="#CBFFFFFF" Offset="0.756"/>
+                                    <GradientStop Color="#E5FFFFFF" Offset="0.56"/>
+                                    <GradientStop Color="#E6000000" Offset="0"/>
+                                </LinearGradientBrush>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--AeroWindow_Template-->
+    <ControlTemplate x:Key="AeroWindow_Template" TargetType="{x:Type Forms:AeroWindow}">
+        <Border BorderThickness="0">
+            <Grid x:Name="LayoutRoot">
+                <Border x:Name="PART_RootBorder"
+                        BorderThickness="0" 
+                        BorderBrush="{DynamicResource {x:Static res:ApplicationSkinResources.WindowBorderBrushKey}}"
+                        Background="{DynamicResource {x:Static res:ApplicationSkinResources.WindowBackgroundBrushKey}}">
+                    <Border BorderBrush="{DynamicResource {x:Static res:ApplicationSkinResources.WindowOuterBorderBrushKey}}" 
+                            BorderThickness="0">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <!-- Ribbon -->
+                            <rib:Ribbon x:Name="PART_RibbonMenu"
+                                        Margin="0,1,0,0"
+                                        FocusManager.IsFocusScope="True"
+                                        ContextMenu="{x:Null}"
+                                        Grid.Row="0">
+                                <rib:Ribbon.ApplicationMenu>
+                                    <rib:RibbonApplicationMenu Label="{x:Static localization:EagleResources.Controls_EagleWindow_ApplicationMenuTitle}"
+                                                               ToolTipTitle="{x:Static localization:EagleResources.Controls_EagleWindow_ApplicationMenuTitle}"
+                                                               SmallImageSource="/Eagle.Windows;component/Images/EagleLogo2.png"
+                                                               LargeImageSource="/Eagle.Windows;component/Images/EagleLogo2.png" 
+                                                               Height="51">
+                                    </rib:RibbonApplicationMenu>
+                                </rib:Ribbon.ApplicationMenu>
+                                <rib:Ribbon.QuickAccessToolBar>
+                                    <rib:RibbonQuickAccessToolBar Visibility="Collapsed" />
+                                </rib:Ribbon.QuickAccessToolBar>
+                            </rib:Ribbon>
+                            <!-- TitleBar -->
+                            <Border Height="Auto" HorizontalAlignment="Stretch" Width="Auto" Margin="60,0,0,0"  VerticalAlignment="Top"
+                                    CornerRadius="0,2,0,0" 
+                                    BorderBrush="{DynamicResource {x:Static res:ApplicationSkinResources.WindowInnerBorderBrushKey}}"
+                                    BorderThickness="0" 
+                                    Background="Transparent"
+                                    x:Name="PART_TitleBar"
+                                    Grid.Row="0">
+                                <Grid HorizontalAlignment="Stretch" Margin="0,0,2,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Margin="10,5,0,10" 
+										       Grid.Column="1" 
+										       
+                                               HorizontalAlignment="Center" 
+                                               VerticalAlignment="Center" >
+                                        <TextBlock Text="{Binding Title, RelativeSource={RelativeSource TemplatedParent}}"
+										       FontSize="16" 
+										       FontFamily="Arial"
+										       Foreground="White" 
+                                               d:LayoutOverrides="Width, Height">
+                                            <TextBlock.Effect>
+                                                <BlurEffect Radius="15" KernelType="Gaussian"/>
+                                            </TextBlock.Effect>
+                                        </TextBlock>
+                                        <TextBlock Text="{Binding Title, RelativeSource={RelativeSource TemplatedParent}}"
+										       FontSize="16" 
+										       FontFamily="Arial"
+										       Foreground="#FF013659" 
+                                               d:LayoutOverrides="Width, Height">
+                                        </TextBlock>
+                                    </Grid>
+                                    <StackPanel Grid.Column="2" HorizontalAlignment="Right" Width="Auto" Orientation="Horizontal" Margin="0,0,6,0" VerticalAlignment="Top">
+                                        <StackPanel Width="Auto" Orientation="Horizontal" Height="25" Margin="0,-1,17,0" HorizontalAlignment="Stretch">
+                                            <StackPanel Width="Auto" Orientation="Horizontal"  x:Name="PART_UsernamePanel"
+                                                        Visibility="{TemplateBinding UsernameVisibility}">
+                                                <Image Width="12" Height="12" Source="/Eagle.Windows;component/Images/user.gif" Stretch="Fill" Visibility="Collapsed"/>
+                                                <Grid VerticalAlignment="Center" Margin="5,1.5,5,0">
+                                                    <TextBlock Text="Welcome Anonymous" TextWrapping="Wrap" Foreground="White" FontFamily="Trebuchet MS" FontSize="11" Height="Auto">
+                    					                <TextBlock.Effect>
+                                                            <BlurEffect Radius="10" KernelType="Gaussian"/>
+                                                        </TextBlock.Effect>
+                                                    </TextBlock>
+                                                    <TextBlock Text="Welcome Anonymous" TextWrapping="Wrap" Foreground="#FF013659" FontFamily="Trebuchet MS" FontSize="11" Height="Auto" x:Name="PART_Username">
+                                                    </TextBlock>
+                                                </Grid>
+                                            </StackPanel>
+                                            <Button Margin="5,0,0,0" Style="{DynamicResource {x:Static res:ApplicationSkinResources.ButtonWithBorderGlowTemplateKey}}" Width="24" Height="24" Foreground="#FFFFFFFF" x:Name="PART_EagleHomeButton" ToolTip="Eagle Home" Visibility="Collapsed">
+                                                <Image Source="/Eagle.Windows;component/Images/Toolbar-Home_01.png" Stretch="Fill" Width="20" Height="20"/>
+                                            </Button>
+                                            <Button  Margin="5,0,0,0" Style="{DynamicResource {x:Static res:ApplicationSkinResources.ButtonWithBorderGlowTemplateKey}}" Width="24" Height="24" Foreground="#FFFFFFFF" x:Name="PART_Settings" ToolTip="Settings"   Visibility="{TemplateBinding SettingsVisibility}">
+                                                <!--Command="cal:CalendarCommands.ShowCustomizeCalendar"-->
+                                                <Image Source="/Eagle.Windows;component/Images/Settings2.png" Stretch="Fill" Width="20" Height="20"/>
+                                            </Button>
+
+                                            <controls:EagleSplitButton Margin="5,0,0,0" 
+                                                                       Height="22"
+                                                                       Width="22"
+                                                                       Style="{StaticResource WindowSysButtonStyle}"
+                                                                       x:Name="PART_Help" 
+                                                                       Placement="Left"
+                                                                       HorizontalOffset="{Binding Path=ActualWidth, RelativeSource={RelativeSource Self}}"
+                                                                       VerticalOffset="{Binding Path=ActualHeight, RelativeSource={RelativeSource Self}}"
+                                                                       ToolTip="{x:Static localization:EagleResources.Controls_EagleWindow_Command_Help_Tolltip}" >
+                                                <controls:EagleSplitButton.Content>
+                                                    <Image Source="/Eagle.Windows;component/Images/Toolbar-help.png" 
+                                                           SnapsToDevicePixels="True" 
+                                                           Stretch="Fill" 
+                                                           Margin="0,-2,0,-3"
+                                                           Width="16" Height="16"/>
+                                                </controls:EagleSplitButton.Content>
+                                            </controls:EagleSplitButton>
+                                        </StackPanel>
+                                        <Button Style="{StaticResource MinimizeButtonStyle}"
+                                                x:Name="PART_MinimizeButton" />
+                                        <ToggleButton Style="{StaticResource MaximinitoggleButtonStyle}"
+                                                      x:Name="PART_MaximizeButton" />
+                                        <Button Style="{StaticResource CloseButtonStyle}"
+                                                x:Name="PART_CloseButton" />
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+
+                            <!-- Content #FFB3CEEC #A5C3EF  -->
+                            <Border Grid.Row="1"
+                                    BorderBrush="{DynamicResource {x:Static res:ApplicationSkinResources.WindowInnerBorderBrushKey}}"
+                                    BorderThickness="0"
+                                    Background="{DynamicResource {x:Static res:ApplicationSkinResources.WindowContentBackgroundBrushKey}}">
+                                <Border BorderBrush="{DynamicResource {x:Static res:ApplicationSkinResources.WindowContentBorderBrushKey}}"
+                                        BorderThickness="0">
+                                    <Grid Margin="5,0,5,0" >
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <!-- Search/Breadcrumb area -->
+                                            <RowDefinition Height="*" />
+                                            <!-- Client -->
+                                            <RowDefinition Height="Auto" />
+                                            <!-- Status Bar -->
+                                        </Grid.RowDefinitions>
+                                        <ContentControl Grid.Row="0" x:Name="PART_SearchBreadcrumbPlace" />
+                                        <AdornerDecorator Grid.Row="1">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition x:Name="PART_NavigationPlaceColumn" Width="230"/>
+                                                    <ColumnDefinition x:Name="PART_NavigationSplitterColumn" Width="5" />
+                                                    <ColumnDefinition Width="1*" />
+                                                </Grid.ColumnDefinitions>
+
+
+                                                <AdornerDecorator Grid.Column="2">
+                                                    <ContentPresenter Content="{TemplateBinding Content}" 
+                                                                      Margin="{TemplateBinding Margin}" />
+                                                </AdornerDecorator>
+                                            </Grid>
+                                        </AdornerDecorator>
+                                        <ContentControl x:Name="PART_StatusPlace" 
+                                                        Margin="0,0,0,4"
+                                                        Grid.Row="2"/>
+                                    </Grid>
+                                </Border>
+                            </Border>
+
+                            <ContentControl x:Name="PART_EagleHome" 
+                                            Grid.RowSpan="2"
+                                            Background="{DynamicResource {x:Static res:ApplicationSkinResources.WindowContentBackgroundBrushKey}}" 
+                                            Margin="0,26,0,55" 
+                                            Visibility="{Binding Path=EagleHomeVisibility, RelativeSource={RelativeSource TemplatedParent}}" />
+
+                        </Grid>
+                    </Border>
+                </Border>
+            </Grid>
+        </Border>
+
+        <ControlTemplate.Triggers>
+            <Trigger Property="WindowState" Value="Maximized">
+                
+                <Setter TargetName="PART_MaximizeButton" Property="IsChecked" Value="True" />
+            </Trigger>
+            <Trigger SourceName="PART_NavigationPane" Property="Visibility" Value="Visible">
+                <Setter TargetName="PART_NavigationPlaceColumn" Property="MinWidth" Value="32" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style TargetType="{x:Type Forms:EagleWindow}">
+        <Setter Property="AllowsTransparency"
+						Value="True"/>
+        <Setter Property="WindowStyle"
+						Value="None"/>
+        <Setter Property="ResizeMode"
+						Value="CanResize"/>
+        <Setter Property="Template"
+						Value="{StaticResource EagleWindow_Template}"/>
+    </Style>
+-->
+</ResourceDictionary>
